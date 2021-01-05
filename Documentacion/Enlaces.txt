@@ -1,0 +1,6 @@
+
+Convertir de JSON a XML:
+
+	https://stackoverflow.com/questions/814001/how-to-convert-json-to-xml-or-xml-to-json
+
+	https://stackoverrun.com/es/q/1701234
