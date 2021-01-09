@@ -36,4 +36,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/favoritos" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONSULTA"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="329dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

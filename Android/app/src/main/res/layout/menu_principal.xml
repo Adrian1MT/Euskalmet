@@ -24,4 +24,12 @@
         android:layout_marginTop="300dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tiempo"
+        android:layout_width="124dp"
+        android:layout_height="24dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="272dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

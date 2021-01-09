@@ -2,13 +2,16 @@ package com.elorrieta.euskalmet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.Button;
@@ -17,21 +20,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
     Button BtnRegistrar,BtnLoguer;
-    TextView Usuario,pass;
+    TextView Usuario,pass, inicio;
     final int iCODIGO = 1234;
     EditText etNombre,etContra;
     ImageView Imagen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         BtnRegistrar = findViewById(R.id.btnRegistrar);
         BtnLoguer = findViewById(R.id.btnLoguer);
 
         Usuario = findViewById(R.id.textUser);
         pass = findViewById(R.id.textPass);
+        inicio= findViewById(R.id.textTocar);
 
         etNombre = (EditText)findViewById(R.id.EditUsuario);
         etContra = (EditText)findViewById(R.id.EditContraseña);
@@ -41,6 +50,29 @@ public class MainActivity extends AppCompatActivity {
         Imagen= (ImageView)findViewById(R.id.imageView);
         Imagen.setImageResource(R.drawable.logotipo);
         Imagen.setOnClickListener(this::mover_ObjectAnimator);
+
+   
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_inicio_sesion, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id==R.id.Opcion1Acerca) {
+            AlertDialog.Builder msj = new AlertDialog.Builder(this);
+            msj.setTitle("AcercaDe");
+            msj.setMessage("R.string.MensajeAcerca");
+            msj.setNeutralButton("R.string.Entendido", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                }});
+            AlertDialog mostrarDialogo =msj.create();
+            mostrarDialogo.show();
+        }
+        return super.onOptionsItemSelected(item);
     }
     public void REGISTRAR(View poView){
         Intent oIntent = new Intent(this, Pantalla_Registro_Usuario.class);
@@ -63,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"Bienvenido",Toast.LENGTH_SHORT).show();
             Intent oIntent = new Intent(this, Menu_principal.class);
             startActivityForResult(oIntent, iCODIGO);
+            etNombre.setText("");
+            etContra.setText("");
         }else{
             Toast.makeText(this,"UserPassMalEscrito",Toast.LENGTH_LONG).show();
             return;
@@ -148,6 +182,11 @@ public class MainActivity extends AppCompatActivity {
         oAnimation6.setDuration(2000);
         oAnimation6.setStartDelay(2500L);
         oAnimation6.start();
+
+        ViewPropertyAnimator oAnimation7 = inicio.animate();
+        oAnimation7.alpha(0f);
+        oAnimation7.setDuration(1000L);
+        oAnimation7.start();
 
     }
 }
