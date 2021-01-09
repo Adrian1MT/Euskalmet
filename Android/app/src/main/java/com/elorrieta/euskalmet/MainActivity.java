@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 Imagen,
                 PropertyValuesHolder.ofFloat("translationY", -700),
                 PropertyValuesHolder.ofFloat("scaleX", 0.9f),
-                PropertyValuesHolder.ofFloat("scaleY", 0.8f)
+                PropertyValuesHolder.ofFloat("scaleY", 0.9f)
         );
         oObjectAnimator.setDuration(2000L);
         oObjectAnimator.setStartDelay(500L);

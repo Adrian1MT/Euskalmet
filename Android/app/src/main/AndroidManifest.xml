@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Euskalmet">
+        <activity android:name=".Listado_Favoritos"></activity>
+        <activity android:name=".Listado_Playas" />
+        <activity android:name=".Top_Ranking" />
+        <activity android:name=".Listado_Espacios_Naturales" />
+        <activity android:name=".Listado_Municipios" />
         <activity android:name=".Menu_principal" />
         <activity android:name=".MainActivity">
             <intent-filter>
