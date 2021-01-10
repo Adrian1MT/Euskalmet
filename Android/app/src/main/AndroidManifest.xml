@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.elorrieta.euskalmet">
+    <!-- Permiso para poder el estado de la red en el teléfono -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Permiso para poder acceder a internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Euskalmet">
-        <activity android:name=".Listado_Favoritos"></activity>
+        <activity android:name=".ClientThread"></activity>
+        <activity android:name=".Listado_Favoritos" />
         <activity android:name=".Listado_Playas" />
         <activity android:name=".Top_Ranking" />
         <activity android:name=".Listado_Espacios_Naturales" />

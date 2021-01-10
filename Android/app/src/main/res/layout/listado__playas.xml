@@ -30,9 +30,8 @@
     <ImageView
         android:id="@+id/imagenplaya"
         android:layout_width="357dp"
-        android:layout_height="211dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="146dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/playas" />

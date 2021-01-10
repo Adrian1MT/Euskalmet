@@ -6,6 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".Listado_Municipios">
 
+    <CheckBox
+        android:id="@+id/checkAlaba2"
+        android:layout_width="115dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="284dp"
+        android:text="ALABA"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkGipuzkoa2" />
+
+    <CheckBox
+        android:id="@+id/checkGipuzkoa2"
+        android:layout_width="124dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="284dp"
+        android:text="GIPUZKOA"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBizkaia2" />
+
+    <CheckBox
+        android:id="@+id/checkBizkaia2"
+        android:layout_width="97dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="152dp"
+        android:text="BIZKAIA"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="410dp"
+        android:layout_height="56dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/button_onoff_indicator_on" />
+
+    <ListView
+        android:id="@+id/ListadoMUN"
+        android:layout_width="376dp"
+        android:layout_height="330dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BTNFiltro"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="167dp"
@@ -30,10 +81,32 @@
     <ImageView
         android:id="@+id/imagenmunicipio"
         android:layout_width="286dp"
-        android:layout_height="205dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="44dp"
+        android:layout_height="146dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/municipios" />
+
+    <EditText
+        android:id="@+id/TextZona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="168dp"
+        android:ems="10"
+        android:hint="Busqueda de Zona"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/BTNFiltro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="232dp"
+        android:text="Añadir Filtro Personalizado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

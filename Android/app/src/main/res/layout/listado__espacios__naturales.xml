@@ -30,9 +30,8 @@
     <ImageView
         android:id="@+id/imagennatural"
         android:layout_width="387dp"
-        android:layout_height="231dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="146dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/espaciosnaturales" />
