@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +21,8 @@ public class Listado_Favoritos extends AppCompatActivity {
     final int iCODIGO = 1234;
     TextView oTextView;
     private ConnectivityManager connectivityManager = null;
+
+    EditText Texto;
 
     TextView consulta;
     CheckBox bizkaia,alava,gipuzkoa;
@@ -30,12 +35,39 @@ public class Listado_Favoritos extends AppCompatActivity {
         Imagen.setImageResource(R.drawable.favoritos);
         oTextView= (TextView)findViewById(R.id.textView);
 
+        Texto= (EditText)findViewById(R.id.textZona);
+        Texto.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+               // Escribir();
+                TextoConsulta="WHERE nombre LIKE ‘"+Texto.getText().toString()+"%'";
+                consulta.setText(TextoConsulta);
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+
         consulta= (TextView)findViewById(R.id.textoConsulta);
         bizkaia= (CheckBox)findViewById(R.id.checkBizkaia);
         alava= (CheckBox)findViewById(R.id.checkAlaba);
         gipuzkoa= (CheckBox)findViewById(R.id.checkGipuzkoa);
-
     }
+
+    public void Escribir(){
+        TextoConsulta="";
+       // TextoConsulta="WHERE nombre LIKE ‘"+Texto.getText().toString()+"%'";
+        TextoConsulta="WHERE nombre LIK";
+    }
+
     public void Siguiente(View poView){
         Intent oIntent = new Intent(this, Listado_Espacios_Naturales.class);
         startActivityForResult(oIntent, iCODIGO);
@@ -89,6 +121,7 @@ public class Listado_Favoritos extends AppCompatActivity {
     }
     public void AplicarFiltro(View v) {
         TextoConsulta="";
+
         if (bizkaia.isChecked()==true){
             if(TextoConsulta.length()==0){
                 TextoConsulta=" WHERE Nombre='bizkaia'";

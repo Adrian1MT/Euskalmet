@@ -23,15 +23,15 @@ public class ClientThread implements Runnable {
             Class.forName("com.mysql.jdbc.Driver");
             //Aqui pondriamos la IP y puerto.
             //sIP = "192.168.2.91";
-           sIP = "192.168.56.1";
-            //sIP = "127.0.0.1";
+           //sIP = "192.168.56.1";
+            sIP = "127.0.0.1";
             sPuerto = "3306";
             sBBDD = "lugares";
             String url = "jdbc:mysql://" + sIP + ":" + sPuerto + "/" + sBBDD + "?serverTimezone=UTC";
             con = DriverManager.getConnection( url, "root", "");
             // Consulta sencilla en este caso.
-            // String sql = "SELECT * FROM municipio";
-            String sql = "SELECT Nombre FROM `municipio` WHERE Nombre='Amurrio'";
+             String sql = "SELECT * FROM municipio";
+            //String sql = "SELECT Nombre FROM municipio WHERE Nombre='Amurrio'";
             st = con.prepareStatement(sql);
             rs = st.executeQuery();
             //--

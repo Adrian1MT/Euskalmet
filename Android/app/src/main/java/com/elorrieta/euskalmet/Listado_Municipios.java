@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 public class Listado_Municipios extends AppCompatActivity {
     ImageView Imagen;
     final int iCODIGO = 1234;
+
+
 
     ListView ListaMunicipios;
     ArrayList<String> NombreMunicipios = new ArrayList<String>();

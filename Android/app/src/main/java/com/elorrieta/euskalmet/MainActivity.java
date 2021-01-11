@@ -119,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
         BtnLoguer.setEnabled(false);
         BtnRegistrar.setEnabled(false);
 
+        BtnLoguer.setVisibility(View.INVISIBLE);
+        BtnRegistrar.setVisibility(View.INVISIBLE);
+
         ViewPropertyAnimator oAnimation = BtnLoguer.animate();
         oAnimation.alpha(0f);
         oAnimation.start();
@@ -146,6 +149,9 @@ public class MainActivity extends AppCompatActivity {
     public void visible(){
         BtnLoguer.setEnabled(true);
         BtnRegistrar.setEnabled(true);
+
+        BtnLoguer.setVisibility(View.VISIBLE);
+        BtnRegistrar.setVisibility(View.VISIBLE);
 
         ViewPropertyAnimator oAnimation = BtnLoguer.animate();
         oAnimation.alpha(1f);
