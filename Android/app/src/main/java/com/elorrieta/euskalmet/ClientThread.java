@@ -7,10 +7,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ClientThread implements Runnable {
     private String sResultado;
-    public ClientThread() {}
+    private  String sql;
+    ArrayList<String> Resultado = new ArrayList<String>();
+
+    public ClientThread(String consulta) {
+        sql=consulta;
+    }
     @Override
     public void run() {
         ResultSet rs = null;
@@ -23,21 +29,23 @@ public class ClientThread implements Runnable {
             Class.forName("com.mysql.jdbc.Driver");
             //Aqui pondriamos la IP y puerto.
             //sIP = "192.168.2.91";
-            sIP = "192.168.13.233";
+            sIP = "192.168.56.1";
             sPuerto = "3306";
             sBBDD = "lugares";
             String url = "jdbc:mysql://" + sIP + ":" + sPuerto + "/" + sBBDD + "?serverTimezone=UTC";
-            con = DriverManager.getConnection( url, "root", "");
+            con = DriverManager.getConnection( url, "Root", "1234");
             // Consulta sencilla en este caso.
-             String sql = "SELECT * FROM municipio";
+            // sql = "SELECT * FROM municipio";
             //String sql = "SELECT Nombre FROM municipio WHERE Nombre='Amurrio'";
             st = con.prepareStatement(sql);
             rs = st.executeQuery();
-            //--
+            //
+            Resultado.clear();
             while (rs.next()) {
                 String var1 = rs.getString("Nombre");
                 Log.i("XXXXXXX", var1);
                 sResultado = var1;
+                Resultado.add(sResultado);
             }
         } catch (ClassNotFoundException e) {
             Log.e("ClassNotFoundException", "");
@@ -69,7 +77,7 @@ public class ClientThread implements Runnable {
             }
         }
     }
-    public String getResponse() {
-        return sResultado;
+    public ArrayList getResponse() {
+        return Resultado;
     }
 }

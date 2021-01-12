@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class Listado_Favoritos extends AppCompatActivity {
     ImageView Imagen;
     final int iCODIGO = 1234;
@@ -27,6 +29,7 @@ public class Listado_Favoritos extends AppCompatActivity {
     TextView consulta;
     CheckBox bizkaia,alava,gipuzkoa;
     String TextoConsulta="";
+    String EscribirConsulta="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,17 +47,17 @@ public class Listado_Favoritos extends AppCompatActivity {
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-               // Escribir();
-                TextoConsulta="WHERE nombre LIKE ‘"+Texto.getText().toString()+"%'";
-                consulta.setText(TextoConsulta);
+                EscribirConsulta="";
+                if(Texto.getText().toString().length()>0){
+                    EscribirConsulta=" Nombre LIKE ‘"+Texto.getText().toString()+"%'";
+                }
+                Escribir();
             }
             @Override
             public void afterTextChanged(Editable s) {
 
             }
         });
-
-
 
         consulta= (TextView)findViewById(R.id.textoConsulta);
         bizkaia= (CheckBox)findViewById(R.id.checkBizkaia);
@@ -63,9 +66,17 @@ public class Listado_Favoritos extends AppCompatActivity {
     }
 
     public void Escribir(){
-        TextoConsulta="";
-       // TextoConsulta="WHERE nombre LIKE ‘"+Texto.getText().toString()+"%'";
-        TextoConsulta="WHERE nombre LIK";
+        String Inicio="";
+        if(TextoConsulta.length()==0 && EscribirConsulta.length()==0){
+                Inicio= "SELECT Nombre FROM municipio";
+        }else if(TextoConsulta.length()==0){
+            Inicio= "SELECT Nombre FROM municipio WHERE" +EscribirConsulta;
+        }else if(EscribirConsulta.length()==0){
+            Inicio="SELECT Nombre FROM municipio" +TextoConsulta;
+        }else{
+            Inicio="SELECT Nombre FROM municipio" +TextoConsulta+" or"+EscribirConsulta;
+        }
+        consulta.setText(Inicio);
     }
 
     public void Siguiente(View poView){
@@ -81,12 +92,12 @@ public class Listado_Favoritos extends AppCompatActivity {
     public void conectarOnClick(View v) {
         try {
             if (isConnected()) {
-                String sRespuesta = conectar();
+                ArrayList<String> sRespuesta = conectar();
                 if (null == sRespuesta) { // Si la respuesta es null, una excepción ha ocurrido.
                     Toast.makeText(getApplicationContext(), "ERROR_COMUNICACION",
                             Toast.LENGTH_SHORT).show();
                 } else {
-                    oTextView.setText(sRespuesta); // Mostramos en el textView el nombre.
+                    oTextView.setText(sRespuesta.get(0).toString()); // Mostramos en el textView el nombre.
                 }
             } else {
                 Toast.makeText(getApplicationContext(), "ERROR_NO_INTERNET",
@@ -97,8 +108,10 @@ public class Listado_Favoritos extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR_GENERAL", Toast.LENGTH_SHORT).show();
         }
     }
-    private String conectar() throws InterruptedException {
-        ClientThread clientThread = new ClientThread();
+    String sql = "SELECT Nombre FROM municipio WHERE Nombre='Amurrio'";
+
+    private ArrayList conectar() throws InterruptedException {
+        ClientThread clientThread = new ClientThread(sql);
         Thread thread = new Thread(clientThread);
         thread.start();
         thread.join(); // Esperar respusta del servidor...
@@ -143,6 +156,6 @@ public class Listado_Favoritos extends AppCompatActivity {
                 TextoConsulta+=" or Nombre='gipuzkoa'";
             }
         }
-            consulta.setText(TextoConsulta);
+        Escribir();
     }
 }

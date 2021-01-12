@@ -12,6 +12,7 @@
         android:layout_height="27dp"
         android:layout_marginStart="284dp"
         android:text="ALABA"
+        android:onClick="AplicarFiltro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkGipuzkoa2" />
 
@@ -21,6 +22,7 @@
         android:layout_height="27dp"
         android:layout_marginStart="284dp"
         android:text="GIPUZKOA"
+        android:onClick="AplicarFiltro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBizkaia2" />
 
@@ -31,6 +33,7 @@
         android:layout_marginStart="284dp"
         android:layout_marginTop="152dp"
         android:text="BIZKAIA"
+        android:onClick="AplicarFiltro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
