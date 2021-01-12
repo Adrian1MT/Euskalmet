@@ -35,14 +35,14 @@ public class Pantalla_Registro_Usuario extends AppCompatActivity {
         SharedPreferences prefe = getSharedPreferences("Usuarios", Context.MODE_PRIVATE);
 
         if (Usuario.equals("")||Contraseña.equals("")||RepContraseña.equals("")){
-            Toast.makeText(this,"R.string.CamposVaciosRegis",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,R.string.CamposVaciosRegis,Toast.LENGTH_LONG).show();
             return;
         }
 
         if (Contraseña.equals(RepContraseña)){
-            Toast.makeText(this,"R.string.ContraBuena",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,R.string.ContraBuena,Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(this,"R.string.ContraMala",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,R.string.ContraMala,Toast.LENGTH_LONG).show();
             return;
         }
         SharedPreferences.Editor editor =prefe.edit();

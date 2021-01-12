@@ -64,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id==R.id.Opcion1Acerca) {
             AlertDialog.Builder msj = new AlertDialog.Builder(this);
-            msj.setTitle("AcercaDe");
-            msj.setMessage("R.string.MensajeAcerca");
-            msj.setNeutralButton("R.string.Entendido", new DialogInterface.OnClickListener() {
+            msj.setTitle(R.string.Acerca);
+            msj.setMessage(R.string.MensajeAcerca);
+            msj.setNeutralButton(R.string.Entendido, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                 }});
             AlertDialog mostrarDialogo =msj.create();
@@ -82,23 +82,23 @@ public class MainActivity extends AppCompatActivity {
         String Usuario=etNombre.getText().toString();
         String Contraseña=etContra.getText().toString();
         if (Usuario.equals("")||Contraseña.equals("")){
-            Toast.makeText(this,"CamposVacios",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,R.string.CamposVacios,Toast.LENGTH_LONG).show();
             return;
         }
         SharedPreferences prefe = getSharedPreferences("Usuarios", Context.MODE_PRIVATE);
         String User = prefe.getString(Usuario,"");
         if(User.length()==0){
-            Toast.makeText(this,"R.string.NoExisteUser",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,R.string.NoExisteUser,Toast.LENGTH_LONG).show();
             return;
         }
         if (User.equals(Contraseña)){
-            Toast.makeText(this,"Bienvenido",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,R.string.Welcome,Toast.LENGTH_SHORT).show();
             Intent oIntent = new Intent(this, Menu_principal.class);
             startActivityForResult(oIntent, iCODIGO);
             etNombre.setText("");
             etContra.setText("");
         }else{
-            Toast.makeText(this,"UserPassMalEscrito",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,R.string.UserPassMalEscrito,Toast.LENGTH_LONG).show();
             return;
         }
     }

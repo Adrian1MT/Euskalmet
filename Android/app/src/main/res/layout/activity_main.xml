@@ -6,43 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/EditContraseña"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toEndOf="@+id/textPass"
-        app:layout_constraintTop_toBottomOf="@+id/EditUsuario" />
-
     <TextView
         android:id="@+id/textUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="348dp"
-        android:text="USUARIO:"
+        android:text="@string/USUARIO"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
-        android:text="CONTRASEÑA:"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textUser" />
 
     <EditText
         android:id="@+id/EditUsuario"
@@ -56,6 +31,31 @@
         app:layout_constraintStart_toEndOf="@+id/textUser"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/Pass"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textUser" />
+
+    <EditText
+        android:id="@+id/EditContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toEndOf="@+id/textPass"
+        app:layout_constraintTop_toBottomOf="@+id/EditUsuario" />
+
     <Button
         android:id="@+id/btnLoguer"
         android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginBottom="88dp"
         android:onClick="LOGUEAR"
-        android:text="LOGIN"
+        android:text="@string/Login"
         app:backgroundTint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="88dp"
         android:onClick="REGISTRAR"
-        android:text="REGISTRARSE"
+        android:text="@string/Registro"
         app:backgroundTint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +97,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginBottom="176dp"
         android:fontFamily="sans-serif-black"
-        android:text="( PULSAR PARA EMPEZAR )"
+        android:text="@string/Tocar"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

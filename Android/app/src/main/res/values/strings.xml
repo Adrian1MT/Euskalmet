@@ -1,12 +1,54 @@
 <resources>
+    //Pantalla Principal Parte1.xml ----------------------------------------------------------------------------------------------------------------------------------------------
+    //Mirar si se podria cambiar las fotos
     <string name="app_name">Euskalmet</string>
+    <string name="Tocar">( PULSAR PARA EMPEZAR )</string>
+
+    //Pantalla Principal Parte2.xml ----------------------------------------------------------------------------------------------------------------------------------------------
+    <string name="Login">LOGIN</string>
+    <string name="Registro">REGISTRARSE</string>
+
+    <string name="USUARIO">USUARIO:</string>
+    <string name="Pass">CONTRASEÑA:</string>
+
+    //MainActivity.java ----------------------------------------------------------------------------------------------------------------------------------------------
+    <string name="Acerca">Acerca De...</string>
+            //Pendiente de mejora---------
+    <string name="MensajeAcerca">Aplicacion Metereologica cuyo cometido es informar a los usuarios sobre el estado del tiempo en ciertas localidades</string>
+     //-----------------------
+    <string name="Entendido">ENTENDIDOS</string>
+
+    <string name="CamposVacios">RELLENA LOS CAMPOS VACIOS POR FAVOR</string>
+    <string name="NoExisteUser">No existe ningun usuario con ese nombre</string>
+
+    <string name="Welcome">Bienvenido</string>
+    <string name="UserPassMalEscrito">El Usuario o la contraseña no Coincide</string>
+
+    //Registrarse.xml ----------------------------------------------------------------------------------------------------------------------------------------------
+    <string name="USer">Usuario:</string>
+    <string name="NomUSer">Nombre Usuario</string>
+
+    <string name="Passer">Contraseña:</string>
+    <string name="ConPass">Nueva Contraseña</string>
+
+    <string name="RepPass">Repetir Contraseña:</string>
+    <string name="TextRepPass">Repetir Contraseña</string>
+
+    <string name="Cancel">cancelar</string>
+    <string name="Guarda">Guardar</string>
+
+    //Registrarse.java ----------------------------------------------------------------------------------------------------------------------------------------------
+
+    <string name="CamposVaciosRegis">Si quieres Registrarte por lo menos rellena los campos</string>
+    <string name="ContraBuena">Coincide Las Contraseñas</string>
+    <string name="ContraMala">No Coincide Las Contraseñas</string>
+
+    <!-- Strings used for fragments for navigation --> //NO Borrar ----------------------------------------------------------------------------------------------------------------------------------------------
     <string name="title_activity_textcenter">Textcenter</string>
-    <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_favoritos">Favoritos</string>

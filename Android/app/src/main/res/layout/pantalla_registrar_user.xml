@@ -23,7 +23,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="60dp"
         android:onClick="Guardar"
-        android:text="Guardar"
+        android:text="@string/Guarda"
         app:layout_constraintStart_toEndOf="@+id/button3"
         app:layout_constraintTop_toBottomOf="@+id/editRepCont" />
 
@@ -32,8 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="8dp"
-        android:text="Repetir Contraseña"
+        android:layout_marginTop="24dp"
+        android:text="@string/RepPass"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editContNue" />
@@ -45,7 +45,7 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Nueva Contraseña"
+        android:hint="@string/ConPass"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
         android:layout_marginTop="8dp"
-        android:text="Contraseña"
+        android:text="@string/Passer"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editUsuario" />
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
         android:layout_marginTop="24dp"
-        android:text="USUARIO"
+        android:text="@string/USer"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -77,9 +77,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Repetir Contraseña"
+        android:hint="@string/TextRepPass"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -91,7 +91,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="60dp"
         android:onClick="Cancelar"
-        android:text="cancelar"
+        android:text="@string/Cancel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRepCont" />
 
@@ -102,7 +102,7 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Nombre Usuario"
+        android:hint="@string/NomUSer"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />

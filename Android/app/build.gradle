@@ -40,7 +40,8 @@ dependencies {
 
     // Necesitamos implementar esta libreria para poder realizar la conexión con la BBDD.
     //implementation files('C:\\Eclipse_Worskspace\\Euskalmet\\Librerias\\mysql-connector-java-5.1.23.jar')
-    implementation files('C:\\Eclipse_Worskspace\\Euskalmet\\Librerias\\mysql-connector-java-5.1.47.jar')
+    //implementation files('C:\\Eclipse_Worskspace\\Euskalmet\\Librerias\\mysql-connector-java-5.1.47.jar')
+    implementation files('Librerias\\mysql-connector-java-5.1.47.jar')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
