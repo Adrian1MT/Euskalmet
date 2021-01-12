@@ -34,6 +34,7 @@ public class ClientThread implements Runnable {
             sBBDD = "lugares";
             String url = "jdbc:mysql://" + sIP + ":" + sPuerto + "/" + sBBDD + "?serverTimezone=UTC";
             con = DriverManager.getConnection( url, "Root", "1234");
+            //con = DriverManager.getConnection( url, "root", "");
             // Consulta sencilla en este caso.
             // sql = "SELECT * FROM municipio";
             //String sql = "SELECT Nombre FROM municipio WHERE Nombre='Amurrio'";
