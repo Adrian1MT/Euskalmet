@@ -2,6 +2,9 @@ package com.elorrieta.euskalmet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.app.AlertDialog;
@@ -30,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     EditText etNombre,etContra;
     ImageView Imagen;
 
+    Boolean Terminar=false;
+    ObjectAnimator AparecertAnimator;
+    ObjectAnimator DesaparecertAnimator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,8 +151,40 @@ public class MainActivity extends AppCompatActivity {
         ViewPropertyAnimator oAnimation6 = etContra.animate();
         oAnimation6.alpha(0f);
         oAnimation6.start();
+
+        Cartel();
     }
+    public void Cartel(){
+        if (Terminar==false){
+
+        AparecertAnimator = ObjectAnimator.ofFloat(inicio,View.ALPHA,1f,0f);
+        AparecertAnimator.setDuration(800);
+        AnimatorSet Animacioncontinua =new AnimatorSet();
+        Animacioncontinua.playTogether(AparecertAnimator);
+        Animacioncontinua.addListener(new AnimatorListenerAdapter() {
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                DesaparecertAnimator=ObjectAnimator.ofFloat(inicio,View.ALPHA,0f,1f);
+                DesaparecertAnimator.setDuration(800);
+
+                AnimatorSet AnimacionRepetir =new AnimatorSet();
+                AnimacionRepetir.playTogether(DesaparecertAnimator);
+                AnimacionRepetir.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        Cartel();
+                    }
+                });
+                AnimacionRepetir.start();
+            }
+        });
+        Animacioncontinua.start();
+        }
+    }
+
     public void visible(){
+        Terminar=true;
         BtnLoguer.setEnabled(true);
         BtnRegistrar.setEnabled(true);
 
@@ -193,6 +231,5 @@ public class MainActivity extends AppCompatActivity {
         oAnimation7.alpha(0f);
         oAnimation7.setDuration(1000L);
         oAnimation7.start();
-
     }
 }

@@ -9,7 +9,9 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.transition.Scene;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -30,6 +32,8 @@ public class Listado_Favoritos extends AppCompatActivity {
     CheckBox bizkaia,alava,gipuzkoa;
     String TextoConsulta="";
     String EscribirConsulta="";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +67,7 @@ public class Listado_Favoritos extends AppCompatActivity {
         bizkaia= (CheckBox)findViewById(R.id.checkBizkaia);
         alava= (CheckBox)findViewById(R.id.checkAlaba);
         gipuzkoa= (CheckBox)findViewById(R.id.checkGipuzkoa);
+
     }
 
     public void Escribir(){
