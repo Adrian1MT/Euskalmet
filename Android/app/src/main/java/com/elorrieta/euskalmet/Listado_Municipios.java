@@ -57,7 +57,7 @@ public class Listado_Municipios extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 EscribirConsulta="";
                 if(Texto.getText().toString().length()>0){
-                    EscribirConsulta=" Nombre LIKE '"+Texto.getText().toString()+"%'";
+                    EscribirConsulta=" Nombre LIKE '"+Texto.getText().toString().trim()+"%'";
                 }
                 Check();
             }
