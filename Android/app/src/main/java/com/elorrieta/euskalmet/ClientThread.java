@@ -31,7 +31,7 @@ public class ClientThread implements Runnable {
             sIP = "192.168.13.233";
             //sIP = "192.168.56.1";
             sPuerto = "3306";
-            sBBDD = "lugares";
+            sBBDD = "euskalmet";
             String url = "jdbc:mysql://" + sIP + ":" + sPuerto + "/" + sBBDD + "?serverTimezone=UTC";
             //con = DriverManager.getConnection( url, "Root", "1234");
             con = DriverManager.getConnection( url, "root", "");
@@ -43,7 +43,7 @@ public class ClientThread implements Runnable {
             //
             Resultado.clear();
             while (rs.next()) {
-                String var1 = rs.getString("Nombre");
+                String var1 = rs.getString("nombre");
                 Log.i("XXXXXXX", var1);
                 sResultado = var1;
                 Resultado.add(sResultado);

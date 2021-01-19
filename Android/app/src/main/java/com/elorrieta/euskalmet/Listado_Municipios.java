@@ -1,6 +1,9 @@
 package com.elorrieta.euskalmet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -14,12 +17,9 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class Listado_Municipios extends AppCompatActivity {
 
     private ConnectivityManager connectivityManager = null;
     String sql;
-    ListView ListaMunicipios;
+    RecyclerView ListaMunicipios;
     ArrayList<String> NombreMunicipios = new ArrayList<String>();
 
     EditText Texto;
@@ -46,7 +46,10 @@ public class Listado_Municipios extends AppCompatActivity {
         Imagen= (ImageView)findViewById(R.id.imagenmunicipio);
         Imagen.setImageResource(R.drawable.municipios);
 
-        ListaMunicipios= (ListView)findViewById(R.id.ListadoMUN);
+        ListaMunicipios= (RecyclerView)findViewById(R.id.ListadoMUN);
+
+        ListaMunicipios.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        ListaMunicipios.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         Texto= (EditText)findViewById(R.id.TextZona);
         Texto.addTextChangedListener(new TextWatcher()
@@ -57,7 +60,7 @@ public class Listado_Municipios extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 EscribirConsulta="";
                 if(Texto.getText().toString().length()>0){
-                    EscribirConsulta=" Nombre LIKE '"+Texto.getText().toString().trim()+"%'";
+                    EscribirConsulta=" nombre LIKE '"+Texto.getText().toString().trim()+"%'";
                 }
                 Check();
             }
@@ -67,23 +70,22 @@ public class Listado_Municipios extends AppCompatActivity {
         bizkaia= (CheckBox)findViewById(R.id.checkBizkaia2);
         alava= (CheckBox)findViewById(R.id.checkAlaba2);
         gipuzkoa= (CheckBox)findViewById(R.id.checkGipuzkoa2);
-        sql = "SELECT Nombre FROM municipio";
+        sql = "SELECT nombre FROM municipios";
         Buscar();
     }
     public void relleno(){
-        ArrayAdapter<String> adapter = new ArrayAdapter <String>
-                (this,android.R.layout.simple_list_item_1,NombreMunicipios);
+        AdapterLista adapter = new AdapterLista(NombreMunicipios);
         ListaMunicipios.setAdapter(adapter);
     }
 
     public void Escribir(){
         String Inicio="";
         if(TextoConsulta.length()==0 && EscribirConsulta.length()==0){
-            Inicio= "SELECT Nombre FROM municipio";
+            Inicio= "SELECT nombre FROM municipios";
         }else if(TextoConsulta.length()==0){
-            Inicio= "SELECT Nombre FROM municipio WHERE" +EscribirConsulta;
+            Inicio= "SELECT nombre FROM municipios WHERE" +EscribirConsulta;
         } else{
-            Inicio="SELECT Nombre FROM municipio" +TextoConsulta;
+            Inicio="SELECT nombre FROM municipios" +TextoConsulta;
         }
         sql=Inicio;
         Buscar();
@@ -93,9 +95,9 @@ public class Listado_Municipios extends AppCompatActivity {
 
         if (bizkaia.isChecked()==true){
             if(TextoConsulta.length()==0){
-                TextoConsulta=" WHERE PaisOrigen='BIZKAIA'";
+                TextoConsulta=" WHERE idProvincia=48";
             }else{
-                TextoConsulta+=" or PaisOrigen='BIZKAIA'";
+                TextoConsulta+=" or idProvincia=48";
             }
             if(EscribirConsulta.length()>0){
                 TextoConsulta+=" and"+EscribirConsulta;
@@ -103,9 +105,9 @@ public class Listado_Municipios extends AppCompatActivity {
         }
         if (alava.isChecked()==true){
             if(TextoConsulta.length()==0){
-                TextoConsulta=" WHERE PaisOrigen='ALABA'";
+                TextoConsulta=" WHERE idProvincia=1";
             }else{
-                TextoConsulta+=" or PaisOrigen='ALABA'";
+                TextoConsulta+=" or idProvincia=1";
             }
             if(EscribirConsulta.length()>0){
                 TextoConsulta+=" and"+EscribirConsulta;
@@ -113,9 +115,9 @@ public class Listado_Municipios extends AppCompatActivity {
         }
         if (gipuzkoa.isChecked()==true){
             if(TextoConsulta.length()==0){
-                TextoConsulta=" WHERE PaisOrigen='GIPUZKOA'";
+                TextoConsulta=" WHERE idProvincia=20";
             }else{
-                TextoConsulta+=" or PaisOrigen='GIPUZKOA'";
+                TextoConsulta+=" or idProvincia=20";
             }
             if(EscribirConsulta.length()>0){
                 TextoConsulta+=" and"+EscribirConsulta;

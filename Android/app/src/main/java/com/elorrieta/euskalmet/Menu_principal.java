@@ -1,6 +1,9 @@
 package com.elorrieta.euskalmet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,19 +12,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Menu_principal extends AppCompatActivity {
-    ListView ListaOpciones;
+    RecyclerView recycler;
     ArrayList<String> NombreTarea = new ArrayList<String>();
     ImageView Imagen;
     TextView time;
@@ -33,25 +32,30 @@ public class Menu_principal extends AppCompatActivity {
         setContentView(R.layout.menu_principal);
         Imagen= (ImageView)findViewById(R.id.imageView3);
         Imagen.setImageResource(R.drawable.logotipo);
-        ListaOpciones= (ListView)findViewById(R.id.Actividades);
-        TodoElListado();
-
+        recycler= (RecyclerView)findViewById(R.id.recycler);
         time= (TextView)findViewById(R.id.tiempo);
 
-        ListaOpciones.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
+        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        TodoElListado();
+
+        AdapterMenu adapter = new AdapterMenu(NombreTarea);
+
+        adapter.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView adapterView, View view, int i, long l) {
-                Opciones(i);
+            public void onClick(View view) {
+                int id = recycler.getChildAdapterPosition(view);
+                Opciones(id);
             }
         });
+
+        recycler.setAdapter(adapter);
+
         hora();
     }
     public void hora(){
-
             String currentDateTimeString = DateFormat.getTimeInstance().format(new Date());
             time.setText(currentDateTimeString);
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,8 +112,5 @@ public class Menu_principal extends AppCompatActivity {
         NombreTarea.add("Favoritos");
         NombreTarea.add("Top Ranking");
         NombreTarea.add("Las Playas");
-        ArrayAdapter<String> adapter = new ArrayAdapter <String>
-                (this,android.R.layout.simple_list_item_1,NombreTarea);
-        ListaOpciones.setAdapter(adapter);
     }
 }
