@@ -107,10 +107,10 @@ public class Menu_principal extends AppCompatActivity {
         }
     }
     public void TodoElListado(){
-        NombreTarea.add("Listado de Municipios");
-        NombreTarea.add("Listado de Espacios Naturales");
-        NombreTarea.add("Favoritos");
-        NombreTarea.add("Top Ranking");
-        NombreTarea.add("Las Playas");
+        NombreTarea.add(getString(R.string.ListMunicipios));
+        NombreTarea.add(getString(R.string.ListEspNat));
+        NombreTarea.add(getString(R.string.Favoritos));
+        NombreTarea.add(getString(R.string.TRanking));
+        NombreTarea.add(getString(R.string.Playas));
     }
 }

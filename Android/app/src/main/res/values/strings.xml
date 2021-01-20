@@ -1,21 +1,24 @@
 <resources>
-    //Pantalla Principal Parte1.xml ----------------------------------------------------------------------------------------------------------------------------------------------
+    //Pantalla Principal Parte1.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------------
     //Mirar si se podria cambiar las fotos
     <string name="app_name">Euskalmet</string>
     <string name="Tocar">( PULSAR PARA EMPEZAR )</string>
 
-    //Pantalla Principal Parte2.xml ----------------------------------------------------------------------------------------------------------------------------------------------
+    //Pantalla Principal Parte2.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------------
     <string name="Login">LOGIN</string>
     <string name="Registro">REGISTRARSE</string>
 
     <string name="USUARIO">USUARIO:</string>
     <string name="Pass">CONTRASEÑA:</string>
 
-    //MainActivity.java ----------------------------------------------------------------------------------------------------------------------------------------------
+    //MainActivity.java
+    ----------------------------------------------------------------------------------------------------------------------------------------------
     <string name="Acerca">Acerca De...</string>
-            //Pendiente de mejora---------
+    //Pendiente de mejora---------
     <string name="MensajeAcerca">Aplicacion Metereologica cuyo cometido es informar a los usuarios sobre el estado del tiempo en ciertas localidades</string>
-     //-----------------------
+    //-----------------------
     <string name="Entendido">ENTENDIDOS</string>
 
     <string name="CamposVacios">RELLENA LOS CAMPOS VACIOS POR FAVOR</string>
@@ -24,7 +27,8 @@
     <string name="Welcome">Bienvenido</string>
     <string name="UserPassMalEscrito">El Usuario o la contraseña no Coincide</string>
 
-    //Registrarse.xml ----------------------------------------------------------------------------------------------------------------------------------------------
+    //Registrarse.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------------
     <string name="USer">Usuario:</string>
     <string name="NomUSer">Nombre Usuario</string>
 
@@ -37,13 +41,24 @@
     <string name="Cancel">cancelar</string>
     <string name="Guarda">Guardar</string>
 
-    //Registrarse.java ----------------------------------------------------------------------------------------------------------------------------------------------
+    //Registrarse.java
+    ----------------------------------------------------------------------------------------------------------------------------------------------
 
     <string name="CamposVaciosRegis">Si quieres Registrarte por lo menos rellena los campos</string>
     <string name="ContraBuena">Coincide Las Contraseñas</string>
     <string name="ContraMala">No Coincide Las Contraseñas</string>
 
-    <!-- Strings used for fragments for navigation --> //NO Borrar ----------------------------------------------------------------------------------------------------------------------------------------------
+    //Menu_Principal.java
+    ----------------------------------------------------------------------------------------------------------------------------------------------
+    <string name="ListMunicipios">Listado de Municipios</string>
+    <string name="ListEspNat">Listado de Espacios Naturales</string>
+    <string name="Favoritos">Favoritos</string>
+    <string name="TRanking">Top Ranking</string>
+    <string name="Playas">Las Playas</string>
+
+
+    <!-- Strings used for fragments for navigation --> //NO Borrar
+    ----------------------------------------------------------------------------------------------------------------------------------------------
     <string name="title_activity_textcenter">Textcenter</string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

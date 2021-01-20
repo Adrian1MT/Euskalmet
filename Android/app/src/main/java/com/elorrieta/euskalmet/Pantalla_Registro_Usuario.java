@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class Pantalla_Registro_Usuario extends AppCompatActivity {
     EditText etNombre,etContraNuev,etRepContra;
     ImageView Imagen;
@@ -28,10 +30,11 @@ public class Pantalla_Registro_Usuario extends AppCompatActivity {
         finish();
     }
 
-    public void Guardar(View poView){
+    public void Guardar(View poView) throws InterruptedException {
         String Usuario=etNombre.getText().toString();
         String Contraseña=etContraNuev.getText().toString();
         String RepContraseña=etRepContra.getText().toString();
+        String Recordar="";
         SharedPreferences prefe = getSharedPreferences("Usuarios", Context.MODE_PRIVATE);
 
         if (Usuario.equals("")||Contraseña.equals("")||RepContraseña.equals("")){
@@ -45,10 +48,16 @@ public class Pantalla_Registro_Usuario extends AppCompatActivity {
             Toast.makeText(this,R.string.ContraMala,Toast.LENGTH_LONG).show();
             return;
         }
-        SharedPreferences.Editor editor =prefe.edit();
-        editor.putString(Usuario,Contraseña);
-        editor.commit();
+        // "INSERT INTO usuarios(idUser, password, recuperacion) VALUES ('"Usuario"', '"Contraseña"', '')"
+        String Sql="INSERT INTO usuarios(idUser, password, recuperacion) VALUES ('" + Usuario + "', '" + Contraseña +"', '"+Recordar+"')";
+        conectar(Sql);
 
         finish();
+    }
+    private void conectar(String consulta) throws InterruptedException {
+        Client_Insercion_Update clientThread = new Client_Insercion_Update(consulta);
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
     }
 }
