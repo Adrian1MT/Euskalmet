@@ -38,6 +38,7 @@ public class Listado_Municipios extends AppCompatActivity {
     CheckBox bizkaia,alava,gipuzkoa;
     String TextoConsulta="";
     String EscribirConsulta="";
+    String usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,9 @@ public class Listado_Municipios extends AppCompatActivity {
 
         ListaMunicipios.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         ListaMunicipios.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+        Bundle extras = getIntent().getExtras();
+        usuario = extras.getString("usuario");
 
         Texto= (EditText)findViewById(R.id.TextZona);
         Texto.addTextChangedListener(new TextWatcher()
@@ -74,7 +78,7 @@ public class Listado_Municipios extends AppCompatActivity {
         Buscar();
     }
     public void relleno(){
-        AdapterLista adapter = new AdapterLista(NombreMunicipios);
+        AdapterLista adapter = new AdapterLista(NombreMunicipios, usuario);
         ListaMunicipios.setAdapter(adapter);
     }
 

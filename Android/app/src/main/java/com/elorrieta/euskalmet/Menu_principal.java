@@ -24,12 +24,16 @@ public class Menu_principal extends AppCompatActivity {
     ArrayList<String> NombreTarea = new ArrayList<String>();
     ImageView Imagen;
     TextView time;
+    String usuario;
 
-    final int iCODIGO = 1234;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principal);
+        Bundle extras = getIntent().getExtras();
+        usuario = extras.getString("usuario");
+
+
         Imagen= (ImageView)findViewById(R.id.imageView3);
         Imagen.setImageResource(R.drawable.logotipo);
         recycler= (RecyclerView)findViewById(R.id.recycler);
@@ -86,23 +90,24 @@ public class Menu_principal extends AppCompatActivity {
         switch(i) {
             case 0:
                 oIntent = new Intent(this, Listado_Municipios.class);
-                startActivityForResult(oIntent, iCODIGO);
+                oIntent.putExtra("usuario", usuario);
+                startActivity(oIntent);
                 break;
             case 1:
                 oIntent = new Intent(this, Listado_Espacios_Naturales.class);
-                startActivityForResult(oIntent, iCODIGO);
+                startActivity(oIntent);
                 break;
             case 2:
                 oIntent = new Intent(this, Listado_Favoritos.class);
-                startActivityForResult(oIntent, iCODIGO);
+                startActivity(oIntent);
                 break;
             case 3:
                 oIntent = new Intent(this, Top_Ranking.class);
-                startActivityForResult(oIntent, iCODIGO);
+                startActivity(oIntent);
                 break;
             case 4:
                 oIntent = new Intent(this, Listado_Playas.class);
-                startActivityForResult(oIntent, iCODIGO);
+                startActivity(oIntent);
                 break;
         }
     }

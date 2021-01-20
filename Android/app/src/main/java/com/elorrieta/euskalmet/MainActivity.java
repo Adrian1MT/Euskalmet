@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }else{
             ArrayList<String> listaContrasenia = new ArrayList<String>();
-            consulta = "SELECT PASSWORD FROM usuarios WHERE idUser LIKE '" + Usuario.trim() +"'";
+            consulta = "SELECT PASSWORD FROM usuarios WHERE idUser = '" + Usuario.trim() +"'";
             listaContrasenia = conectar(consulta);
             if(listaContrasenia.isEmpty()){
                 Toast notificacion = Toast.makeText(this, "El usuario no existe", Toast.LENGTH_LONG);
@@ -102,8 +102,9 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 if(listaContrasenia.get(0).equals(Contraseña.trim())){
                     Toast.makeText(this,R.string.Welcome,Toast.LENGTH_SHORT).show();
-                    Intent oIntent = new Intent(this, Menu_principal.class);
-                    startActivityForResult(oIntent, iCODIGO);
+                    Intent i = new Intent(this, Menu_principal.class);
+                    i.putExtra("usuario", Usuario.trim());
+                    startActivity(i);
                     etNombre.setText("");
                     etContra.setText("");
                 }else{
