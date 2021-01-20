@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
@@ -84,30 +85,43 @@ public class MainActivity extends AppCompatActivity {
         Intent oIntent = new Intent(this, Pantalla_Registro_Usuario.class);
         startActivityForResult(oIntent, iCODIGO);
     }
-    public void LOGUEAR(View poView){
+    public void LOGUEAR(View poView) throws InterruptedException {
+        String consulta;
         String Usuario=etNombre.getText().toString();
         String Contraseña=etContra.getText().toString();
-        if (Usuario.equals("")||Contraseña.equals("")){
+        if (Usuario.trim().equals("")||Contraseña.trim().equals("")){
             Toast.makeText(this,R.string.CamposVacios,Toast.LENGTH_LONG).show();
             return;
-        }
-        SharedPreferences prefe = getSharedPreferences("Usuarios", Context.MODE_PRIVATE);
-        String User = prefe.getString(Usuario,"");
-        if(User.length()==0){
-            Toast.makeText(this,R.string.NoExisteUser,Toast.LENGTH_LONG).show();
-            return;
-        }
-        if (User.equals(Contraseña)){
-            Toast.makeText(this,R.string.Welcome,Toast.LENGTH_SHORT).show();
-            Intent oIntent = new Intent(this, Menu_principal.class);
-            startActivityForResult(oIntent, iCODIGO);
-            etNombre.setText("");
-            etContra.setText("");
         }else{
-            Toast.makeText(this,R.string.UserPassMalEscrito,Toast.LENGTH_LONG).show();
-            return;
+            ArrayList<String> listaContrasenia = new ArrayList<String>();
+            consulta = "SELECT PASSWORD FROM usuarios WHERE idUser LIKE '" + Usuario.trim() +"'";
+            listaContrasenia = conectar(consulta);
+            if(listaContrasenia.isEmpty()){
+                Toast notificacion = Toast.makeText(this, "El usuario no existe", Toast.LENGTH_LONG);
+                notificacion.show();
+            }else{
+                if(listaContrasenia.get(0).equals(Contraseña.trim())){
+                    Toast.makeText(this,R.string.Welcome,Toast.LENGTH_SHORT).show();
+                    Intent oIntent = new Intent(this, Menu_principal.class);
+                    startActivityForResult(oIntent, iCODIGO);
+                    etNombre.setText("");
+                    etContra.setText("");
+                }else{
+                    Toast.makeText(this,R.string.UserPassMalEscrito,Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
         }
     }
+    private ArrayList conectar(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "password";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
+    }
+
     public void mover_ObjectAnimator(View v) {
         ObjectAnimator oObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(
                 Imagen,

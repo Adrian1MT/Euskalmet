@@ -26,11 +26,11 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/favorito"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/idDato"
         app:layout_constraintStart_toEndOf="@+id/idDato"
-        app:srcCompat="@android:drawable/btn_star_big_off" />
+        app:srcCompat="@drawable/estrella_off" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class ClientThread implements Runnable {
     private String sResultado;
     private  String sql;
+    public String columnaResultado;
     ArrayList<String> Resultado = new ArrayList<String>();
 
     public ClientThread(String consulta) {
@@ -28,6 +29,7 @@ public class ClientThread implements Runnable {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             //Aqui pondriamos la IP y puerto.
+            //sIP = "192.168.13.236";
             sIP = "192.168.13.233";
             //sIP = "192.168.56.1";
             sPuerto = "3306";
@@ -43,7 +45,7 @@ public class ClientThread implements Runnable {
             //
             Resultado.clear();
             while (rs.next()) {
-                String var1 = rs.getString("nombre");
+                String var1 = rs.getString(columnaResultado);
                 Log.i("XXXXXXX", var1);
                 sResultado = var1;
                 Resultado.add(sResultado);

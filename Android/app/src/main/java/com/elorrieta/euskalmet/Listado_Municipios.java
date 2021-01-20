@@ -134,7 +134,7 @@ public class Listado_Municipios extends AppCompatActivity {
         try {
             if (isConnected()) {
                 NombreMunicipios.clear();
-                NombreMunicipios = conectar();
+                NombreMunicipios = conectar(sql);
                 if (NombreMunicipios.size()>0) {
                     relleno(); // Mostramos en el textView el nombre.
                 } else {
@@ -155,8 +155,9 @@ public class Listado_Municipios extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR_GENERAL", Toast.LENGTH_SHORT).show();
         }
     }
-    private ArrayList conectar() throws InterruptedException {
-        ClientThread clientThread = new ClientThread(sql);
+    private ArrayList conectar(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "nombre";
         Thread thread = new Thread(clientThread);
         thread.start();
         thread.join(); // Esperar respusta del servidor...
