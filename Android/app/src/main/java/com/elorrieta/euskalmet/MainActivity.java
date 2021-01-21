@@ -97,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
             consulta = "SELECT PASSWORD FROM usuarios WHERE idUser='" + Usuario.trim() +"'";
             listaContrasenia = conectar(consulta);
             if(listaContrasenia.isEmpty()){
-                Toast notificacion = Toast.makeText(this, "El usuario no existe", Toast.LENGTH_LONG);
-                notificacion.show();
+                Toast.makeText(this, "El usuario no existe", Toast.LENGTH_LONG).show();
+                return;
             }else{
                 if(listaContrasenia.get(0).equals(Contraseña.trim())){
                     Toast.makeText(this,R.string.Welcome,Toast.LENGTH_SHORT).show();
