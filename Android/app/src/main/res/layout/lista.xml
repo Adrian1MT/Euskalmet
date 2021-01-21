@@ -30,7 +30,6 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/idDato"
-        app:layout_constraintStart_toEndOf="@+id/idDato"
-        app:srcCompat="@drawable/estrella_off" />
+        app:layout_constraintStart_toEndOf="@+id/idDato" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

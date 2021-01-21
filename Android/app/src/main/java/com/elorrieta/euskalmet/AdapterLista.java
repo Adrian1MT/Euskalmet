@@ -20,9 +20,11 @@ import java.util.ArrayList;
 public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDatos>{
 
     ArrayList<String> listaDatos;
+    String Usuario;
 
-    public AdapterLista(ArrayList<String> listaDatos) {
+    public AdapterLista(ArrayList<String> listaDatos, String usuario) {
         this.listaDatos = listaDatos;
+        this.Usuario = usuario;
     }
 
     @NonNull
@@ -51,8 +53,11 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDa
 
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
+            String consulta = "SELECT";
             dato = (TextView) itemView.findViewById(R.id.idDato);
             favorito = (ImageView) itemView.findViewById(R.id.favorito);
+
+            favorito.setImageResource(R.drawable.estrella_off);
             context = itemView.getContext();
         }
 
@@ -75,7 +80,14 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDa
                     break;
             }
         }
+    }
 
-
+    private ArrayList conectar(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "password";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
     }
 }
