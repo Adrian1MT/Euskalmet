@@ -79,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog mostrarDialogo =msj.create();
             mostrarDialogo.show();
         }
+        if (id==R.id.Opcion2Recordar) {
+            Intent oIntent = new Intent(this, EnviarCorreoRecordatorio.class);
+            startActivityForResult(oIntent, iCODIGO);
+        }
         return super.onOptionsItemSelected(item);
     }
     public void REGISTRAR(View poView){
@@ -246,7 +250,5 @@ public class MainActivity extends AppCompatActivity {
         oAnimation6.setDuration(2000);
         oAnimation6.setStartDelay(2500L);
         oAnimation6.start();
-
-
     }
 }
