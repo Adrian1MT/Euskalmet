@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class Listado_Favoritos extends AppCompatActivity {
     ImageView Imagen;
-    final int iCODIGO = 1234;
+    String usuario;
     TextView oTextView;
     private ConnectivityManager connectivityManager = null;
 
@@ -38,6 +38,10 @@ public class Listado_Favoritos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listado__favoritos);
+
+        Bundle extras = getIntent().getExtras();
+        usuario = extras.getString("usuario");
+
         Imagen= (ImageView)findViewById(R.id.ImagenFavorito);
         Imagen.setImageResource(R.drawable.favoritos);
         oTextView= (TextView)findViewById(R.id.textView);
@@ -84,16 +88,7 @@ public class Listado_Favoritos extends AppCompatActivity {
         consulta.setText(Inicio);
     }
 
-    public void Siguiente(View poView){
-        Intent oIntent = new Intent(this, Listado_Espacios_Naturales.class);
-        startActivityForResult(oIntent, iCODIGO);
-        finish();
-    }
-    public void anterior(View poView){
-        Intent oIntent = new Intent(this, Top_Ranking.class);
-        startActivityForResult(oIntent, iCODIGO);
-        finish();
-    }
+
     public void conectarOnClick(View v) {
         try {
             if (isConnected()) {
@@ -162,5 +157,17 @@ public class Listado_Favoritos extends AppCompatActivity {
             }
         }
         Escribir();
+    }
+    public void Siguiente(View poView){
+        Intent oIntent = new Intent(this, Listado_Espacios_Naturales.class);
+        oIntent.putExtra("usuario", usuario);
+        startActivity(oIntent);
+        finish();
+    }
+    public void anterior(View poView){
+        Intent oIntent = new Intent(this, Top_Ranking.class);
+        oIntent.putExtra("usuario", usuario);
+        startActivity(oIntent);
+        finish();
     }
 }

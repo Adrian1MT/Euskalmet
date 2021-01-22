@@ -95,18 +95,22 @@ public class Menu_principal extends AppCompatActivity {
                 break;
             case 1:
                 oIntent = new Intent(this, Listado_Espacios_Naturales.class);
+                oIntent.putExtra("usuario", usuario);
                 startActivity(oIntent);
                 break;
             case 2:
                 oIntent = new Intent(this, Listado_Favoritos.class);
+                oIntent.putExtra("usuario", usuario);
                 startActivity(oIntent);
                 break;
             case 3:
                 oIntent = new Intent(this, Top_Ranking.class);
+                oIntent.putExtra("usuario", usuario);
                 startActivity(oIntent);
                 break;
             case 4:
                 oIntent = new Intent(this, Listado_Playas.class);
+                oIntent.putExtra("usuario", usuario);
                 startActivity(oIntent);
                 break;
         }

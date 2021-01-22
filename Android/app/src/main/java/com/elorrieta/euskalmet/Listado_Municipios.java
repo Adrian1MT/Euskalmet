@@ -211,12 +211,14 @@ public class Listado_Municipios extends AppCompatActivity {
 
     public void Siguiente(View poView){
         Intent oIntent = new Intent(this, Listado_Playas.class);
-        startActivityForResult(oIntent, iCODIGO);
+        oIntent.putExtra("usuario", usuario);
+        startActivity(oIntent);
         finish();
     }
     public void anterior(View poView){
         Intent oIntent = new Intent(this, Listado_Espacios_Naturales.class);
-        startActivityForResult(oIntent, iCODIGO);
+        oIntent.putExtra("usuario", usuario);
+        startActivity(oIntent);
         finish();
     }
 }
