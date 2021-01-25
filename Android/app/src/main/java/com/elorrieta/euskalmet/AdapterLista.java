@@ -27,7 +27,6 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDa
     ArrayList<String> listaDatos;
     ArrayList<String> listaFavoritos;
     String Usuario;
-
     public AdapterLista(ArrayList<String> listaDatos, String usuario) {
         this.listaDatos = listaDatos;
         this.Usuario = usuario;
@@ -112,6 +111,8 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDa
                     }
                     break;
                 case R.id.idDato:
+                    Intent oIntent = new Intent(context, Detalles_Municipios.class);
+                    context.startActivity(oIntent);
                     break;
             }
         }
