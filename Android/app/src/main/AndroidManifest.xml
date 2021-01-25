@@ -4,6 +4,8 @@
     <!-- Permiso para poder el estado de la red en el teléfono -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Permiso para poder acceder a internet -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- Permiso para poderusar la cámara del teléfono -->
+    <uses-permission android:name="android.permission.CAMERA"/><!-- Permiso para poder usar la cámara del teléfono -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><!-- Permiso para poder escribir y guardar la foto-->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -34,6 +36,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".Pantalla_Registro_Usuario" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.android.euskalmet"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
     </application>
 
 </manifest>

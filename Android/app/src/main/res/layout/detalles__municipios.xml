@@ -67,6 +67,7 @@
         android:layout_height="78dp"
         android:layout_marginEnd="1dp"
         android:foreground="@drawable/foto"
+        android:onClick="hacerFoto"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/imageView15"
         app:layout_constraintEnd_toStartOf="@+id/btnFotosLugar"
@@ -106,5 +107,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
+
+    <ImageView
+        android:id="@+id/ivFoto"
+        android:layout_width="214dp"
+        android:layout_height="245dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:rotation="90"
+        android:rotationY="0"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintBottom_toTopOf="@+id/btnCamara"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="20dp"
+        android:text="Guardar en BBDD"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btnCamara"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
