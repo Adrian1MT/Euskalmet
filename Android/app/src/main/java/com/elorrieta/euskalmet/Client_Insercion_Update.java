@@ -29,9 +29,9 @@ public class Client_Insercion_Update implements Runnable{
         try{
             Class.forName("com.mysql.jdbc.Driver");
             //Aqui pondriamos la IP y puerto.
-            //sIP = "192.168.13.236";
+            sIP = "192.168.13.236";
             //sIP = "192.168.13.233";
-            sIP = "192.168.56.1";
+            //sIP = "192.168.56.1";
             sPuerto = "3306";
             sBBDD = "euskalmet";
             String url = "jdbc:mysql://" + sIP + ":" + sPuerto + "/" + sBBDD + "?serverTimezone=UTC";
