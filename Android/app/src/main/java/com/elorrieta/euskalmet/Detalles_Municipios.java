@@ -16,6 +16,7 @@ import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
@@ -36,11 +37,22 @@ public class Detalles_Municipios extends AppCompatActivity {
     static final int SOLICITUD_PERMISO_WRITE_EXTERNAL_STORAGE = 0;
     ImageView imagen;
     Button guardar;
+=======
+import android.widget.EditText;
+import android.widget.TextView;
 
+import java.util.ArrayList;
+>>>>>>> 11f83c1c8fa11209f870603a13ff10d3e73bbc0e
+
+public class Detalles_Municipios extends AppCompatActivity {
+    String NombreMun;
+    TextView TxtMun;
+    EditText Descripcion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detalles__municipios);
+<<<<<<< HEAD
 
         imagen = (ImageView) findViewById(R.id.ivFoto);
         guardar = (Button) findViewById(R.id.btnGuardar);
@@ -221,6 +233,35 @@ public class Detalles_Municipios extends AppCompatActivity {
             solicitarPermiso(Manifest.permission.WRITE_EXTERNAL_STORAGE, "Sin el permiso"+
                     " para escribir, no puedo guardar la foto.", SOLICITUD_PERMISO_WRITE_EXTERNAL_STORAGE, this);
         }
+=======
+        TxtMun= (TextView) findViewById(R.id.textMunicipio);
+        Descripcion= (EditText) findViewById(R.id.TextDescripcion);
+
+        ArrayList<String> ListaDescripcion = new ArrayList<String>();
+        Bundle oExtras = getIntent().getExtras();
+        NombreMun = oExtras.getString("Municipio");
+
+        TxtMun.setText(NombreMun);
+        String Consulta= "SELECT descripcion FROM municipios WHERE nombre='" + NombreMun +"'";
+        try {
+            ListaDescripcion = cargarDescripcion(Consulta);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if(ListaDescripcion.isEmpty()){
+            Descripcion.setText("Lo sentimos no existe registros en nuestra base de datos");
+        }else {
+        Descripcion.setText(ListaDescripcion.get(0));
+        }
+    }
+    private ArrayList cargarDescripcion(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "descripcion";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
+>>>>>>> 11f83c1c8fa11209f870603a13ff10d3e73bbc0e
     }
 
     String currentPhotoPath;

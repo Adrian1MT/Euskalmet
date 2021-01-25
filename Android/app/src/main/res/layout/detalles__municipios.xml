@@ -7,6 +7,18 @@
     tools:context=".Detalles_Municipios">
 
     <TextView
+        android:id="@+id/textTitulo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="136dp"
+        android:text="Descripcion: "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,22 +55,22 @@
         android:id="@+id/btnMisFotos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="152dp"
         android:text="MIS FOTOS"
         app:backgroundTint="#8BC34A"
-        app:layout_constraintBottom_toTopOf="@+id/imageView17"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnFotosLugar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="152dp"
         android:text="FOTOS DEL LUGAR"
         app:backgroundTint="#8BC34A"
-        app:layout_constraintBottom_toTopOf="@+id/imageView16"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
@@ -66,47 +78,26 @@
         android:layout_width="88dp"
         android:layout_height="78dp"
         android:layout_marginEnd="1dp"
+        android:layout_marginBottom="132dp"
         android:foreground="@drawable/foto"
         android:onClick="hacerFoto"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/imageView15"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnFotosLugar"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btnMisFotos" />
 
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="410dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="632dp"
-        android:scaleType="centerCrop"
+    <EditText
+        android:id="@+id/TextDescripcion"
+        android:layout_width="370dp"
+        android:layout_height="204dp"
+        android:layout_marginTop="176dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/button_onoff_indicator_on" />
-
-    <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="167dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="632dp"
-        android:onClick="Siguiente"
-        android:rotationY="180"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/homeAsUpIndicator" />
-
-    <ImageView
-        android:id="@+id/imageView17"
-        android:layout_width="167dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="632dp"
-        android:onClick="anterior"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/homeAsUpIndicator" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivFoto"

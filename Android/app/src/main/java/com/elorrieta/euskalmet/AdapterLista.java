@@ -112,7 +112,11 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDa
                     break;
                 case R.id.idDato:
                     Intent oIntent = new Intent(context, Detalles_Municipios.class);
+<<<<<<< HEAD
  //                   oIntent.putExtra("nomMunicipio", dato.getText().toString());
+=======
+                    oIntent.putExtra("Municipio",dato.getText().toString());
+>>>>>>> 11f83c1c8fa11209f870603a13ff10d3e73bbc0e
                     context.startActivity(oIntent);
                     break;
             }
