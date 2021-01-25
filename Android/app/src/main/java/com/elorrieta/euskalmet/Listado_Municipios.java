@@ -44,7 +44,7 @@ public class Listado_Municipios extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listado__municipios);
-        Imagen= (ImageView)findViewById(R.id.imagenmunicipio);
+        Imagen= (ImageView)findViewById(R.id.imagendetallesmunicipio);
         Imagen.setImageResource(R.drawable.municipios);
 
         ListaMunicipios= (RecyclerView)findViewById(R.id.ListadoMUN);

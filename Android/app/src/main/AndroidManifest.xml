@@ -3,7 +3,10 @@
     package="com.elorrieta.euskalmet">
     <!-- Permiso para poder el estado de la red en el teléfono -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Permiso para poder acceder a internet -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Permiso para poderusar la cámara del teléfono -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Euskalmet">
-        <activity android:name=".Client_Insercion_Update"></activity>
+        <activity android:name=".Detalles_Municipios"></activity>
+        <activity android:name=".Client_Insercion_Update" />
         <activity android:name=".ClientThread" />
         <activity android:name=".Listado_Favoritos" />
         <activity android:name=".Listado_Playas" />

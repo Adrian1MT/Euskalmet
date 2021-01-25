@@ -1,6 +1,7 @@
 package com.elorrieta.euskalmet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,13 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
 
 public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDatos>{
-
     ArrayList<String> listaDatos;
     ArrayList<String> listaFavoritos;
     String Usuario;
@@ -127,4 +132,5 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDa
         thread.start();
         thread.join(); // Esperar respusta del servidor...
     }
+
 }
