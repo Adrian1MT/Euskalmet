@@ -5,4 +5,7 @@
     <item
         android:id="@+id/Opcion1Acerca"
         android:title="Acerca de ..." />
+    <item
+        android:id="@+id/Opcion2Recordar"
+        android:title="Recordar Contraseña" />
 </menu>

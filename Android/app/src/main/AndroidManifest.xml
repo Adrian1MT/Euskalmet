@@ -15,7 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Euskalmet">
+<<<<<<< HEAD
         <activity android:name=".Detalles_Municipios"></activity>
+=======
+        <activity android:name=".EnviarCorreoRecordatorio"></activity>
+>>>>>>> 3e6638b6979f6551aae091c26fa11d47956d85d6
         <activity android:name=".Client_Insercion_Update" />
         <activity android:name=".ClientThread" />
         <activity android:name=".Listado_Favoritos" />

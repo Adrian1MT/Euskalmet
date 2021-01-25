@@ -9,22 +9,28 @@ import android.widget.ImageView;
 
 public class Top_Ranking extends AppCompatActivity {
     ImageView Imagen;
-    final int iCODIGO = 1234;
+    String usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.top__ranking);
+
+        Bundle extras = getIntent().getExtras();
+        usuario = extras.getString("usuario");
+
         Imagen= (ImageView)findViewById(R.id.imagenranking);
         Imagen.setImageResource(R.drawable.ranking);
     }
     public void Siguiente(View poView){
         Intent oIntent = new Intent(this, Listado_Favoritos.class);
-        startActivityForResult(oIntent, iCODIGO);
+        oIntent.putExtra("usuario", usuario);
+        startActivity(oIntent);
         finish();
     }
     public void anterior(View poView){
         Intent oIntent = new Intent(this, Listado_Playas.class);
-        startActivityForResult(oIntent, iCODIGO);
+        oIntent.putExtra("usuario", usuario);
+        startActivity(oIntent);
         finish();
     }
 }

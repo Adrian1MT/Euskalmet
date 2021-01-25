@@ -52,7 +52,7 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDa
         }
         if(listaFavoritos.contains(holder.dato.getText().toString())){
             holder.favorito.setImageResource(R.drawable.estrella_on);
-        }else{
+        }else {
             holder.favorito.setImageResource(R.drawable.estrella_off);
         }
     }
