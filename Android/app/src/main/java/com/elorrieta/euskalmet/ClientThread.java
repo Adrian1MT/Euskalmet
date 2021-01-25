@@ -30,8 +30,8 @@ public class ClientThread implements Runnable {
             Class.forName("com.mysql.jdbc.Driver");
             //Aqui pondriamos la IP y puerto.
          //   sIP = "192.168.13.236";
-           // sIP = "192.168.1.1";
-            sIP = "192.168.56.1";
+            //sIP = "192.168.1.38";
+           sIP = "192.168.56.1";
             sPuerto = "3306";
             sBBDD = "euskalmet";
             String url = "jdbc:mysql://" + sIP + ":" + sPuerto + "/" + sBBDD + "?serverTimezone=UTC";
