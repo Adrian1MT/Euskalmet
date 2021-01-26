@@ -4,6 +4,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.util.List;
+
 public class Mapa extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener
 {
     private GoogleMap mapa;
@@ -30,11 +35,20 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Google
         super.onCreate(savedInstanceState);
         String nombre;
         Bundle oExtras = getIntent().getExtras();
-        longitud = oExtras.getDouble("longitud");
+        //longitud = oExtras.getDouble("longitud");
 
-        latitud = oExtras.getDouble("latitud");
+        //latitud = oExtras.getDouble("latitud");
 
-        //nombre= oExtras.getString("Nombre");
+        nombre= oExtras.getString("Nombre");
+
+        try {
+            List<Address> result = new Geocoder(this).getFromLocationName(nombre, 1000);
+                latitud = result.get(0).getLatitude();
+                longitud = result.get(0).getLongitude();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //IR=(Button) findViewById(R.id.button1);
         //IR.setTag("Ir a"+nombre);
