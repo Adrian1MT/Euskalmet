@@ -154,7 +154,7 @@ public class Detalles_Municipios extends AppCompatActivity {
         private Context TheThis;
         private String NameOfFolder = "/DCIM/Camera";
         private String NameOfFile = "";
-
+//--------------------------------------------------
         public void SaveImage(Context context, Bitmap ImageToSave) {
 
             TheThis = context;
@@ -241,20 +241,14 @@ public class Detalles_Municipios extends AppCompatActivity {
 //            guardar imagen
             Save savefile = new Save();
             savefile.SaveImage(this, bmap);
+            
         } else {
             solicitarPermiso(Manifest.permission.WRITE_EXTERNAL_STORAGE, "Sin el permiso"+
                     " para escribir, no puedo guardar la foto.", SOLICITUD_PERMISO_WRITE_EXTERNAL_STORAGE, this);
         }
 
     }
-    private ArrayList cargarDescripcion(String consulta) throws InterruptedException {
-        ClientThread clientThread = new ClientThread(consulta);
-        clientThread.columnaResultado = "descripcion";
-        Thread thread = new Thread(clientThread);
-        thread.start();
-        thread.join(); // Esperar respusta del servidor...
-        return clientThread.getResponse();
-    }
+
 
     String currentPhotoPath;
     private File createImageFile() throws IOException {
@@ -272,6 +266,15 @@ public class Detalles_Municipios extends AppCompatActivity {
         // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getAbsolutePath();
         return image;
+    }
+    //---------------------------------------------------------------
+    private ArrayList cargarDescripcion(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "descripcion";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
     }
     private ArrayList cargarLongitud(String consulta) throws InterruptedException {
         ClientThread clientThread = new ClientThread(consulta);
