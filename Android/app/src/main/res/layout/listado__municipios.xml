@@ -73,7 +73,7 @@
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <ImageView
-        android:id="@+id/imagenmunicipio"
+        android:id="@+id/imagendetallesmunicipio"
         android:layout_width="286dp"
         android:layout_height="146dp"
         app:layout_constraintEnd_toEndOf="parent"

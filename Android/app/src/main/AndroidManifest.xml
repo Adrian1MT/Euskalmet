@@ -3,7 +3,17 @@
     package="com.elorrieta.euskalmet">
     <!-- Permiso para poder el estado de la red en el teléfono -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Permiso para poder acceder a internet -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Permiso para poderusar la cámara del teléfono -->
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
+    <uses-permission android:name="android.permission.CAMERA"/><!-- Permiso para poder usar la cámara del teléfono -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><!-- Permiso para poder escribir y guardar la foto-->
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -12,9 +22,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Euskalmet">
-        <activity android:name=".EnviarCorreoRecordatorio"></activity>
-        <activity android:name=".Client_Insercion_Update" />
-        <activity android:name=".ClientThread" />
+        <activity android:name=".Mapa"></activity>
+        <activity android:name=".Detalles_Municipios" />
+        <activity android:name=".EnviarCorreoRecordatorio" />
         <activity android:name=".Listado_Favoritos" />
         <activity android:name=".Listado_Playas" />
         <activity android:name=".Top_Ranking" />
@@ -29,6 +39,25 @@
             </intent-filter>
         </activity>
         <activity android:name=".Pantalla_Registro_Usuario" />
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.android.euskalmet"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
     </application>
 
 </manifest>
