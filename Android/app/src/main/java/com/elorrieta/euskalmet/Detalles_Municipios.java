@@ -24,12 +24,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -76,6 +79,13 @@ public class Detalles_Municipios extends AppCompatActivity {
         if (requestCode == SOLICITUD_PERMISO_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+            String Foto=convertirImgeString(imageBitmap);
+            String sql= "INSERT INTO fotos( nomMunicipio, idUser, foto) VALUES ('" + NombreMun + "', '" + 1 +"', '"+Foto+"')";
+            try {
+                conectarInsertaFoto(sql);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             imagen.setImageBitmap(imageBitmap);
 
             //En proceso
@@ -100,6 +110,19 @@ public class Detalles_Municipios extends AppCompatActivity {
 //            }
 
         }
+    }
+    private String convertirImgeString(Bitmap bitmap){
+        ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,arrayOutputStream);
+        byte[] imagenByte=arrayOutputStream.toByteArray();
+        String imagenString = android.util.Base64.encodeToString(imagenByte,android.util.Base64.DEFAULT);
+        return imagenString;
+    }
+    private void conectarInsertaFoto(String consulta) throws InterruptedException {
+        Client_Insercion_Update clientThread = new Client_Insercion_Update(consulta);
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
     }
     public void hacerFoto(View view) {
 

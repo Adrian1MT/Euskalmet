@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:rotationX="-4"
     tools:context=".Detalles_Municipios">
 
     <TextView
@@ -120,7 +121,7 @@
         android:layout_height="89dp"
         android:layout_marginStart="48dp"
         android:layout_marginBottom="20dp"
-        android:rotation="90"
+        android:rotation="0"
         android:rotationY="0"
         android:scaleX="2"
         android:scaleY="2"
@@ -134,7 +135,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="4dp"
-        android:text="Guardar en BBDD"
+        android:text="Compartir"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/btnCamara"
         app:layout_constraintEnd_toEndOf="parent" />
