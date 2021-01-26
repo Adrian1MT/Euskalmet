@@ -41,7 +41,7 @@ public class Detalles_Municipios extends AppCompatActivity {
     static final int SOLICITUD_PERMISO_WRITE_EXTERNAL_STORAGE = 0;
     ImageView imagen;
     Button guardar;
-    String NombreMun;
+    String NombreMun,Usuario;
     TextView TxtMun;
     EditText Descripcion;
     @Override
@@ -58,7 +58,7 @@ public class Detalles_Municipios extends AppCompatActivity {
         ArrayList<String> ListaDescripcion = new ArrayList<String>();
         Bundle oExtras = getIntent().getExtras();
         NombreMun = oExtras.getString("Municipio");
-
+        Usuario= oExtras.getString("Usuario");
         TxtMun.setText(NombreMun);
         String Consulta= "SELECT descripcion FROM municipios WHERE nombre='" + NombreMun +"'";
         try {
@@ -80,7 +80,7 @@ public class Detalles_Municipios extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             String Foto=convertirImgeString(imageBitmap);
-            String sql= "INSERT INTO fotos( nomMunicipio, idUser, foto) VALUES ('" + NombreMun + "', '" + 1 +"', '"+Foto+"')";
+            String sql= "INSERT INTO fotos( nomMunicipio, idUser, foto) VALUES ('" + NombreMun + "', '" + Usuario +"', '"+Foto+"')";
             try {
                 conectarInsertaFoto(sql);
             } catch (InterruptedException e) {
