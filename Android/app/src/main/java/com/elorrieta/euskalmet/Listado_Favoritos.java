@@ -138,6 +138,7 @@ public class Listado_Favoritos extends AppCompatActivity {
     //------------------------------------------------------------------------
 
     public void Buscar(){
+        ListaFavoritos.setVisibility(View.VISIBLE);
         try {
             if (isConnected()) {
                 NombreFavoritos.clear();
@@ -148,8 +149,7 @@ public class Listado_Favoritos extends AppCompatActivity {
                     NombreFavoritos.add("");
                     relleno();
                     // Si la respuesta es null, una excepción ha ocurrido.
-                   /* Toast.makeText(getApplicationContext(), "ERROR_COMUNICACION",
-                            Toast.LENGTH_SHORT).show();*/
+                    ListaFavoritos.setVisibility(View.INVISIBLE);
                     Toast.makeText(getApplicationContext(), "Resultado Vacio",
                             Toast.LENGTH_SHORT).show();
                 }
