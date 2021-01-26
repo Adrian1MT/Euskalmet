@@ -88,27 +88,6 @@ public class Detalles_Municipios extends AppCompatActivity {
             }
             imagen.setImageBitmap(imageBitmap);
 
-            //En proceso
-//            //Comprueba el permiso para grabar
-//            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-//                // Create the File where the photo should go
-//                File photoFile = null;
-//                try {
-//                    photoFile = createImageFile();
-//                } catch (IOException ex) {
-//                    // Error occurred while creating the File
-//                    //...
-//                }
-//                // Continue only if the File was successfully created
-//                if (photoFile != null) {
-//                    Uri photoURI = FileProvider.getUriForFile(this,"com.example.android.euskalmet", photoFile);
-//                    this.getIntent().putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-//                }
-//            } else {
-//                solicitarPermiso(Manifest.permission.WRITE_EXTERNAL_STORAGE, "Sin el permiso"+
-//                        " para escribir, no puedo guardar la foto.", SOLICITUD_PERMISO_WRITE_EXTERNAL_STORAGE, this);
-//            }
-
         }
     }
     private String convertirImgeString(Bitmap bitmap){
@@ -245,22 +224,6 @@ public class Detalles_Municipios extends AppCompatActivity {
         //Comprueba el permiso para grabar
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 
-            //========================================================================GUARDAR A TAMAÑO REAL
-//            // Create the File where the photo should go
-//            File photoFile = null;
-//            try {
-//                photoFile = createImageFile();
-//            } catch (IOException ex) {
-//                // Error occurred while creating the File
-//                //...
-//            }
-//            // Continue only if the File was successfully created
-//            if (photoFile != null) {
-//                Uri photoURI = FileProvider.getUriForFile(this,"com.example.pruebafoto", photoFile);
-//                tomarFoto.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-//                startActivityForResult(tomarFoto, SOLICITUD_PERMISO_IMAGE_CAPTURE);
-//            }
-            //===================================================================================
 //            guardar imagen
             Save savefile = new Save();
             savefile.SaveImage(this, bmap);
@@ -279,7 +242,7 @@ public class Detalles_Municipios extends AppCompatActivity {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir("Android/data/com.example.android.pruebafoto/files/Pictures");
-        //      File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
