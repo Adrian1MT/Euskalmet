@@ -35,20 +35,21 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Google
         super.onCreate(savedInstanceState);
         String nombre;
         Bundle oExtras = getIntent().getExtras();
-        //longitud = oExtras.getDouble("longitud");
+        longitud = oExtras.getDouble("longitud");
 
-        //latitud = oExtras.getDouble("latitud");
+        latitud = oExtras.getDouble("latitud");
 
         nombre= oExtras.getString("Nombre");
-
+        List<Address> result = null;
         try {
-            List<Address> result = new Geocoder(this).getFromLocationName(nombre, 1000);
-                latitud = result.get(0).getLatitude();
-                longitud = result.get(0).getLongitude();
-
+            result = new Geocoder(this).getFromLocationName(nombre, 1000);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        latitud = result.get(0).getLatitude();
+        longitud = result.get(0).getLongitude();
+
+
 
         //IR=(Button) findViewById(R.id.button1);
         //IR.setTag("Ir a"+nombre);
@@ -104,5 +105,6 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Google
         mapa.addMarker(new MarkerOptions().position(puntoPulsado)
                 .icon(BitmapDescriptorFactory
                         .defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
-}
+    }
+
 }

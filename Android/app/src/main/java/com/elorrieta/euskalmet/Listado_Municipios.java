@@ -78,7 +78,7 @@ public class Listado_Municipios extends AppCompatActivity {
         Buscar();
     }
     public void relleno(){
-        AdapterLista adapter = new AdapterLista(NombreMunicipios, usuario);
+        AdapterListaMunicipios adapter = new AdapterListaMunicipios(NombreMunicipios, usuario);
         ListaMunicipios.setAdapter(adapter);
     }
 

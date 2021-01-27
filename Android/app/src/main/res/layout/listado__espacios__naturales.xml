@@ -6,6 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".Listado_Espacios_Naturales">
 
+    <CheckBox
+        android:id="@+id/checkAlaba2"
+        android:layout_width="115dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="284dp"
+        android:text="ALABA"
+        android:onClick="AplicarFiltro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkGipuzkoa2" />
+
+    <CheckBox
+        android:id="@+id/checkGipuzkoa2"
+        android:layout_width="124dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="284dp"
+        android:text="GIPUZKOA"
+        android:onClick="AplicarFiltro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBizkaia2" />
+
+    <CheckBox
+        android:id="@+id/checkBizkaia2"
+        android:layout_width="97dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="152dp"
+        android:text="BIZKAIA"
+        android:onClick="AplicarFiltro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="167dp"
@@ -35,4 +66,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/espaciosnaturales" />
+
+    <EditText
+        android:id="@+id/TextZona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="168dp"
+        android:ems="10"
+        android:hint="Busqueda de Zona"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/BTNFiltro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="232dp"
+        android:text="Añadir Filtro Personalizado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ListadoESP"
+        android:layout_width="330dp"
+        android:layout_height="272dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BTNFiltro"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

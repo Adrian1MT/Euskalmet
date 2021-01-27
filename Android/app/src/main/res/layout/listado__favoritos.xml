@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Listado_Favoritos">
 
-    <Button
-        android:id="@+id/BTNFiltro2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="260dp"
-        android:text="Añadir Filtro Personalizado"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imageView15"
         android:layout_width="410dp"
@@ -115,5 +105,27 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkAlaba" />
+
+    <CheckBox
+        android:id="@+id/espacios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="36dp"
+        android:checked="true"
+        android:onClick="cambiarEspaciosNaturales"
+        android:text="Espacios Naturales"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textZona" />
+
+    <CheckBox
+        android:id="@+id/municipios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:onClick="cambiarMunicipios"
+        android:text="Municipios"
+        app:layout_constraintBottom_toBottomOf="@+id/espacios"
+        app:layout_constraintStart_toEndOf="@+id/espacios" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,27 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
-
 import java.util.ArrayList;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 
-
-public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDatos>{
+public class AdapterListaEspaciosNaturales extends RecyclerView.Adapter<AdapterListaEspaciosNaturales.ViewHolderDatos>{
     ArrayList<String> listaDatos;
     ArrayList<String> listaFavoritos;
     String Usuario;
-    public AdapterLista(ArrayList<String> listaDatos, String usuario) {
+    public AdapterListaEspaciosNaturales(ArrayList<String> listaDatos, String usuario) {
         this.listaDatos = listaDatos;
         this.Usuario = usuario;
     }
@@ -43,7 +34,7 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDa
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
         holder.asignarDatos(listaDatos.get(position));
         holder.setOnClickListeners();
-        String consulta = "SELECT nomMunicipio FROM es_favorito_mun WHERE idUser = '" + Usuario + "'";
+        String consulta = "SELECT nomEspNat FROM es_favorito_esp WHERE idUser = '" + Usuario + "'";
         try {
             listaFavoritos = conectar_select(consulta);
         } catch (InterruptedException e) {
@@ -91,7 +82,7 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDa
             switch (v.getId()){
                 case R.id.favorito:
                     if(listaFavoritos.contains(dato.getText().toString())){
-                        String consulta = "DELETE FROM es_favorito_mun WHERE idUser = '" + Usuario + "' AND nomMunicipio = '" + dato.getText().toString() + "'";
+                        String consulta = "DELETE FROM es_favorito_esp WHERE idUser = '" + Usuario + "' AND nomEspNat = '" + dato.getText().toString() + "'";
                         try {
                             conectar_insert(consulta);
                         } catch (InterruptedException e) {
@@ -100,7 +91,7 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDa
                         favorito.setImageResource(R.drawable.estrella_off);
                         listaFavoritos.remove(listaFavoritos.indexOf(dato.getText().toString()));
                     }else{
-                        String consulta = "INSERT INTO es_favorito_mun(idUser, nomMunicipio) VALUES('" + Usuario + "', '" + dato.getText().toString() + "')";
+                        String consulta = "INSERT INTO es_favorito_esp(idUser, nomEspNat) VALUES('" + Usuario + "', '" + dato.getText().toString() + "')";
                         try {
                             conectar_insert(consulta);
                         } catch (InterruptedException e) {
@@ -122,7 +113,7 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.ViewHolderDa
 
     private ArrayList conectar_select(String consulta) throws InterruptedException {
         ClientThread clientThread = new ClientThread(consulta);
-        clientThread.columnaResultado = "nomMunicipio";
+        clientThread.columnaResultado = "nomEspNat";
         Thread thread = new Thread(clientThread);
         thread.start();
         thread.join(); // Esperar respusta del servidor...

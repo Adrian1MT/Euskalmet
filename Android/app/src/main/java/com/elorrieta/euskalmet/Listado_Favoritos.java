@@ -12,13 +12,10 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.transition.Scene;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,6 +23,8 @@ import java.util.ArrayList;
 public class Listado_Favoritos extends AppCompatActivity {
     ImageView Imagen;
     String usuario;
+
+    String nomColumna = "nombre";
 
     RecyclerView ListaFavoritos;
     ArrayList<String> NombreFavoritos = new ArrayList<String>();
@@ -35,7 +34,7 @@ public class Listado_Favoritos extends AppCompatActivity {
     private ConnectivityManager connectivityManager = null;
 
     EditText Texto;
-    CheckBox bizkaia,alava,gipuzkoa;
+    CheckBox bizkaia,alava,gipuzkoa, espacios, municipios;
     String TextoConsulta="";
     String EscribirConsulta="";
 
@@ -65,7 +64,7 @@ public class Listado_Favoritos extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 EscribirConsulta="";
                 if(Texto.getText().toString().length()>0){
-                    EscribirConsulta=" nombre LIKE '"+Texto.getText().toString().trim()+"%'";
+                    EscribirConsulta=" LIKE '"+Texto.getText().toString().trim()+"%'";
                 }
                 Check();
             }
@@ -76,63 +75,138 @@ public class Listado_Favoritos extends AppCompatActivity {
         bizkaia= (CheckBox)findViewById(R.id.checkBizkaia);
         alava= (CheckBox)findViewById(R.id.checkAlaba);
         gipuzkoa= (CheckBox)findViewById(R.id.checkGipuzkoa);
-        sql = "SELECT nombre FROM municipios WHERE nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
+        espacios= (CheckBox)findViewById(R.id.espacios);
+        municipios= (CheckBox)findViewById(R.id.municipios);
+        sql = "SELECT DISTINCT nombre FROM espacios_naturales WHERE nombre IN (SELECT nomEspNat FROM es_favorito_esp WHERE idUser = '" + usuario +"')";
+        nomColumna = "nombre";
         Buscar();
     }
 
     public void relleno(){
-        AdapterLista adapter = new AdapterLista(NombreFavoritos, usuario);
-        ListaFavoritos.setAdapter(adapter);
+        if(municipios.isChecked()) {
+            AdapterListaMunicipios adapter = new AdapterListaMunicipios(NombreFavoritos, usuario);
+            ListaFavoritos.setAdapter(adapter);
+        }else{
+            AdapterListaEspaciosNaturales adapter = new AdapterListaEspaciosNaturales(NombreFavoritos, usuario);
+            ListaFavoritos.setAdapter(adapter);
+        }
     }
 
     public void Escribir(){
         String Inicio="";
-        if(TextoConsulta.length()==0 && EscribirConsulta.length()==0){
-            Inicio= "SELECT nombre FROM municipios WHERE nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
-        }else if(TextoConsulta.length()==0){
-            Inicio= "SELECT nombre FROM municipios WHERE" +EscribirConsulta + " AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
-        } else{
-            Inicio="SELECT nombre FROM municipios" +TextoConsulta;
+        if(municipios.isChecked()){
+            if(TextoConsulta.length()==0 && EscribirConsulta.length()==0){
+                Inicio= "SELECT nombre FROM municipios WHERE nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
+                nomColumna = "nombre";
+            }else if(TextoConsulta.length()==0){
+                Inicio= "SELECT nombre FROM municipios WHERE" +EscribirConsulta + " AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
+                nomColumna = "nombre";
+            } else{
+                Inicio="SELECT nombre FROM municipios" +TextoConsulta;
+                nomColumna = "nombre";
+            }
+
+            sql=Inicio;
+        }else{
+            if(TextoConsulta.length()==0 && EscribirConsulta.length()==0){
+                Inicio= "SELECT nombre FROM espacios_naturales WHERE nombre IN (SELECT nomEspNat FROM es_favorito_esp WHERE idUser = '" + usuario + "')";
+                nomColumna = "nombre";
+            }else if(TextoConsulta.length()==0){
+                Inicio= "SELECT nombre FROM espacios_naturales WHERE nombre " +EscribirConsulta + " AND nombre IN (SELECT nomEspNat FROM es_favorito_esp WHERE idUser = '" + usuario + "')";
+                nomColumna = "nombre";
+            } else{
+                Inicio="SELECT nomEspNat FROM espacios_naturales EN JOIN existe EX ON EN.nombre = EX.nomEspNat JOIN municipios MU ON EX.nomMunicipio = MU.nombre " +TextoConsulta;
+                nomColumna = "nomEspNat";
+            }
+            sql=Inicio;
         }
-        sql=Inicio;
+
         Buscar();
     }
     public void Check(){
         TextoConsulta="";
-
-        if (bizkaia.isChecked()==true){
-            if(TextoConsulta.length()==0){
-                TextoConsulta=" WHERE idProvincia=48 AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
-            }else{
-                TextoConsulta+=" or idProvincia=48 AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
+        if(municipios.isChecked()) {
+            if (bizkaia.isChecked() == true) {
+                if (TextoConsulta.length() == 0) {
+                    TextoConsulta = " WHERE idProvincia=48 AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
+                } else {
+                    TextoConsulta += " or idProvincia=48 AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
+                }
+                if (EscribirConsulta.length() > 0) {
+                    TextoConsulta += " and nombre " + EscribirConsulta;
+                }
             }
-            if(EscribirConsulta.length()>0){
-                TextoConsulta+=" and"+EscribirConsulta;
+            if (alava.isChecked() == true) {
+                if (TextoConsulta.length() == 0) {
+                    TextoConsulta = " WHERE idProvincia=1 AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
+                } else {
+                    TextoConsulta += " or idProvincia=1 AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
+                }
+                if (EscribirConsulta.length() > 0) {
+                    TextoConsulta += " and nombre " + EscribirConsulta;
+                }
             }
-        }
-        if (alava.isChecked()==true){
-            if(TextoConsulta.length()==0){
-                TextoConsulta=" WHERE idProvincia=1 AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
-            }else{
-                TextoConsulta+=" or idProvincia=1 AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
+            if (gipuzkoa.isChecked() == true) {
+                if (TextoConsulta.length() == 0) {
+                    TextoConsulta = " WHERE idProvincia=20 AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
+                } else {
+                    TextoConsulta += " or idProvincia=20 AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
+                }
+                if (EscribirConsulta.length() > 0) {
+                    TextoConsulta += " and nombre " + EscribirConsulta;
+                }
             }
-            if(EscribirConsulta.length()>0){
-                TextoConsulta+=" and"+EscribirConsulta;
+        }else{
+            if (bizkaia.isChecked() == true) {
+                if (TextoConsulta.length() == 0) {
+                    TextoConsulta = " WHERE idProvincia=48 AND nomEspNat IN (SELECT nomEspNat FROM es_favorito_esp WHERE idUser ='" + usuario + "')";
+                } else {
+                    TextoConsulta += " or idProvincia=48 AND nomEspNat IN (SELECT nomEspNat FROM es_favorito_esp WHERE idUser ='" + usuario + "')";
+                }
+                if (EscribirConsulta.length() > 0) {
+                    TextoConsulta += " and nomEspNat " + EscribirConsulta;
+                }
             }
-        }
-        if (gipuzkoa.isChecked()==true){
-            if(TextoConsulta.length()==0){
-                TextoConsulta=" WHERE idProvincia=20 AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
-            }else{
-                TextoConsulta+=" or idProvincia=20 AND nombre IN (SELECT nomMunicipio FROM es_favorito_mun WHERE idUser ='" + usuario + "')";
+            if (alava.isChecked() == true) {
+                if (TextoConsulta.length() == 0) {
+                    TextoConsulta = " WHERE idProvincia=1 AND nomEspNat IN (SELECT nomEspNat FROM es_favorito_esp WHERE idUser ='" + usuario + "')";
+                } else {
+                    TextoConsulta += " or idProvincia=1 AND nomEspNat IN (SELECT nomEspNat FROM es_favorito_esp WHERE idUser ='" + usuario + "')";
+                }
+                if (EscribirConsulta.length() > 0) {
+                    TextoConsulta += " and nomEspNat " + EscribirConsulta;
+                }
             }
-            if(EscribirConsulta.length()>0){
-                TextoConsulta+=" and"+EscribirConsulta;
+            if (gipuzkoa.isChecked() == true) {
+                if (TextoConsulta.length() == 0) {
+                    TextoConsulta = " WHERE idProvincia=20 AND nomEspNat IN (SELECT nomEspNat FROM es_favorito_esp WHERE idUser ='" + usuario + "')";
+                } else {
+                    TextoConsulta += " or idProvincia=20 AND nomEspNat IN (SELECT nomEspNat FROM es_favorito_esp WHERE idUser ='" + usuario + "')";
+                }
+                if (EscribirConsulta.length() > 0) {
+                    TextoConsulta += " and nomEspNat " + EscribirConsulta;
+                }
             }
         }
         Escribir();
     }
     public void AplicarFiltro(View v) {
+        Check();
+    }
+
+    public void cambiarMunicipios(View v){
+        espacios.setChecked(false);
+        if(!municipios.isChecked()){
+            municipios.setChecked(true);
+        }
+        Check();
+    }
+
+    public void cambiarEspaciosNaturales(View v){
+        municipios.setChecked(false);
+        if(!espacios.isChecked()){
+            espacios.setChecked(true);
+        }
         Check();
     }
     //------------------------------------------------------------------------
@@ -142,7 +216,7 @@ public class Listado_Favoritos extends AppCompatActivity {
         try {
             if (isConnected()) {
                 NombreFavoritos.clear();
-                NombreFavoritos = conectar(sql);
+                NombreFavoritos = conectarNombre(sql);
                 if (NombreFavoritos.size()>0) {
                     relleno(); // Mostramos en el textView el nombre.
                 } else {
@@ -162,14 +236,15 @@ public class Listado_Favoritos extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ERROR_GENERAL", Toast.LENGTH_SHORT).show();
         }
     }
-    private ArrayList conectar(String consulta) throws InterruptedException {
+    private ArrayList conectarNombre(String consulta) throws InterruptedException {
         ClientThread clientThread = new ClientThread(consulta);
-        clientThread.columnaResultado = "nombre";
+        clientThread.columnaResultado = nomColumna;
         Thread thread = new Thread(clientThread);
         thread.start();
         thread.join(); // Esperar respusta del servidor...
         return clientThread.getResponse();
     }
+
     public boolean isConnected() {
         boolean ret = false;
         try {
