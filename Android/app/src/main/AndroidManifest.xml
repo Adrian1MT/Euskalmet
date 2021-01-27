@@ -7,9 +7,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
     <uses-permission android:name="android.permission.CAMERA"/><!-- Permiso para poder usar la cámara del teléfono -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><!-- Permiso para poder escribir y guardar la foto-->
 
     <uses-feature
         android:name="android.hardware.camera"
