@@ -4,11 +4,8 @@
     <!-- Permiso para poder el estado de la red en el teléfono -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Permiso para poder acceder a internet -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- Permiso para poderusar la cámara del teléfono -->
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-    <uses-permission android:name="android.permission.CAMERA"/><!-- Permiso para poder usar la cámara del teléfono -->
-
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- Permiso para poder usar la cámara del teléfono -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -20,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Euskalmet">
-        <activity android:name=".Mapa"></activity>
+        <activity android:name=".ListadoFotos"></activity>
+        <activity android:name=".Mapa" />
         <activity android:name=".Detalles_Municipios" />
         <activity android:name=".EnviarCorreoRecordatorio" />
         <activity android:name=".Listado_Favoritos" />
@@ -38,7 +36,6 @@
         </activity>
         <activity android:name=".Pantalla_Registro_Usuario" />
 
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -54,7 +51,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
 

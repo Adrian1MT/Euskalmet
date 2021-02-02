@@ -1,7 +1,6 @@
 package com.elorrieta.euskalmet;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +61,7 @@ public class AdapterListaEspaciosNaturales extends RecyclerView.Adapter<AdapterL
             super(itemView);
 
             dato = (TextView) itemView.findViewById(R.id.idDato);
-            favorito = (ImageView) itemView.findViewById(R.id.favorito);
+            favorito = (ImageView) itemView.findViewById(R.id.foto);
 
 
             context = itemView.getContext();
@@ -80,7 +79,7 @@ public class AdapterListaEspaciosNaturales extends RecyclerView.Adapter<AdapterL
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.favorito:
+                case R.id.foto:
                     if(listaFavoritos.contains(dato.getText().toString())){
                         String consulta = "DELETE FROM es_favorito_esp WHERE idUser = '" + Usuario + "' AND nomEspNat = '" + dato.getText().toString() + "'";
                         try {

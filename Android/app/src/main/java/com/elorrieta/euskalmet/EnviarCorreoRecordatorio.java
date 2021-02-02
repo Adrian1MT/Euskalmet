@@ -32,14 +32,13 @@ public class EnviarCorreoRecordatorio extends AppCompatActivity {
     public void Enviar(View v) throws InterruptedException {
         String enviarcorreo = correo.getText().toString();
         String enviarUsuario = Usuario.getText().toString();
-        String enviarmensaje = "Prueba0";
+        String enviarmensaje = "";
 
         String consulta;
         ArrayList<String> ListaRecuperacion = new ArrayList<String>();
 
         consulta = "SELECT recuperacion FROM usuarios WHERE idUser='" + enviarUsuario.trim() +"'";
         ListaRecuperacion = conectar(consulta);
-       // enviarmensaje=ListaRecuperacion.get(0).toString();
 
         if(ListaRecuperacion.isEmpty()){
             enviarmensaje="Lo sentimos no existe registros en nuestra base de datos";

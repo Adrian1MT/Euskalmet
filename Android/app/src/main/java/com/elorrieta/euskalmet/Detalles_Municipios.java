@@ -70,6 +70,7 @@ public class Detalles_Municipios extends AppCompatActivity {
         TxtMun= (TextView) findViewById(R.id.textMunicipio);
         Descripcion= (EditText) findViewById(R.id.TextDescripcion);
 
+
         ArrayList<String> ListaDescripcion = new ArrayList<String>();
         Bundle oExtras = getIntent().getExtras();
         NombreMun = oExtras.getString("Municipio");
@@ -90,6 +91,11 @@ public class Detalles_Municipios extends AppCompatActivity {
         Consulta = "SELECT nombre FROM estaciones_metereologicas WHERE nomMunicipio = '" + NombreMun + "'";
         try {
             listaEstaciones = cargarEstaciones(Consulta);
+            if (listaEstaciones.size()>0){
+                sEstaciones.setVisibility(View.VISIBLE);
+            }else{
+                sEstaciones.setVisibility(View.INVISIBLE);
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -394,6 +400,10 @@ public class Detalles_Municipios extends AppCompatActivity {
         oIntent.putExtra("longitud", Longitud);
         oIntent.putExtra("latitud", Latitud);
         oIntent.putExtra("Nombre", NombreMun);
+        startActivity(oIntent);
+    }
+    public void MisFotos(View poView) throws InterruptedException {
+        Intent oIntent = new Intent(this, ListadoFotos.class);
         startActivity(oIntent);
     }
     public void verCalidadAire(View v) throws InterruptedException {

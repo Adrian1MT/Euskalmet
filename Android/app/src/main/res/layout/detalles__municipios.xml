@@ -58,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="40dp"
+        android:onClick="MisFotos"
         android:text="MIS FOTOS"
         app:backgroundTint="#8BC34A"
         app:layout_constraintBottom_toBottomOf="parent"

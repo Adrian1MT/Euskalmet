@@ -62,7 +62,7 @@ public class AdapterListaMunicipios extends RecyclerView.Adapter<AdapterListaMun
             super(itemView);
 
             dato = (TextView) itemView.findViewById(R.id.idDato);
-            favorito = (ImageView) itemView.findViewById(R.id.favorito);
+            favorito = (ImageView) itemView.findViewById(R.id.foto);
 
 
             context = itemView.getContext();
@@ -80,7 +80,7 @@ public class AdapterListaMunicipios extends RecyclerView.Adapter<AdapterListaMun
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.favorito:
+                case R.id.foto:
                     if(listaFavoritos.contains(dato.getText().toString())){
                         String consulta = "DELETE FROM es_favorito_mun WHERE idUser = '" + Usuario + "' AND nomMunicipio = '" + dato.getText().toString() + "'";
                         try {

@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".Listado_Espacios_Naturales">
 
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="410dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="632dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/button_onoff_indicator_on" />
+
     <CheckBox
         android:id="@+id/checkAlaba2"
         android:layout_width="115dp"
@@ -41,21 +53,23 @@
         android:id="@+id/imageView12"
         android:layout_width="167dp"
         android:layout_height="53dp"
+        android:layout_marginTop="632dp"
         android:onClick="Siguiente"
         android:rotationY="180"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="167dp"
         android:layout_height="53dp"
+        android:layout_marginTop="632dp"
         android:onClick="anterior"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <ImageView
