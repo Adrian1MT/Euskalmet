@@ -102,10 +102,7 @@ public class AdapterListaEspaciosNaturales extends RecyclerView.Adapter<AdapterL
                     }
                     break;
                 case R.id.idDato:
-                    Intent oIntent = new Intent(context, Detalles_Municipios.class);
 
-                    oIntent.putExtra("Municipio",dato.getText().toString());
-                    context.startActivity(oIntent);
                     break;
             }
         }

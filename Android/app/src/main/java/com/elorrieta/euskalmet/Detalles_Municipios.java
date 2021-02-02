@@ -18,9 +18,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,12 +46,25 @@ public class Detalles_Municipios extends AppCompatActivity {
     String NombreMun,Usuario;
     TextView TxtMun;
     EditText Descripcion;
+    Spinner sEstaciones;
+    ArrayList<String> listaEstaciones = new ArrayList<String>();
+    ArrayList<String> listaComgm3 = new ArrayList<String>();
+    ArrayList<String> listaCO8hmgm3 = new ArrayList<String>();
+    ArrayList<String> listaNogm3 = new ArrayList<String>();
+    ArrayList<String> listaNO2gm3 = new ArrayList<String>();
+    ArrayList<String> listaNOXgm3 = new ArrayList<String>();
+    ArrayList<String> listaPM10gm3 = new ArrayList<String>();
+    ArrayList<String> listaPM25gm3 = new ArrayList<String>();
+    ArrayList<String> listaSO2gm3 = new ArrayList<String>();
+    String[] estaciones;
+    String estacion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detalles__municipios);
 
-
+        sEstaciones = (Spinner) findViewById(R.id.spinner2);
         imagen = (ImageView) findViewById(R.id.ivFoto);
         guardar = (Button) findViewById(R.id.btnGuardar);
         TxtMun= (TextView) findViewById(R.id.textMunicipio);
@@ -71,6 +86,16 @@ public class Detalles_Municipios extends AppCompatActivity {
         }else {
             Descripcion.setText(ListaDescripcion.get(0));
         }
+
+        Consulta = "SELECT nombre FROM estaciones_metereologicas WHERE nomMunicipio = '" + NombreMun + "'";
+        try {
+            listaEstaciones = cargarEstaciones(Consulta);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        estaciones = new String[listaEstaciones.size()];
+        estaciones = listaEstaciones.toArray(estaciones);
+        sEstaciones.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,estaciones));
     }
 
     @SuppressLint("MissingSuperCall")
@@ -278,6 +303,78 @@ public class Detalles_Municipios extends AppCompatActivity {
         thread.join(); // Esperar respusta del servidor...
         return clientThread.getResponse();
     }
+    private ArrayList cargarEstaciones(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "nombre";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
+    }
+    private ArrayList cargarComgm3(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "Comgm3";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
+    }
+    private ArrayList cargarCO8hmgm3(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "CO8hmgm3";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
+    }
+    private ArrayList cargarNogm3(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "Nogm3";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
+    }
+    private ArrayList cargarNO2gm3(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "NO2gm3";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
+    }
+    private ArrayList cargarNOXgm3(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "NOXgm3";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
+    }
+    private ArrayList cargarPM10gm3(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "PM10gm3";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
+    }
+    private ArrayList cargarPM25gm3(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "PM25gm3";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
+    }
+    private ArrayList cargarSO2gm3(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "SO2gm3";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
+    }
     public void cargarmapa(View poView) throws InterruptedException {
         Double Longitud;
         Double Latitud;
@@ -298,5 +395,34 @@ public class Detalles_Municipios extends AppCompatActivity {
         oIntent.putExtra("latitud", Latitud);
         oIntent.putExtra("Nombre", NombreMun);
         startActivity(oIntent);
+    }
+    public void verCalidadAire(View v) throws InterruptedException {
+        estacion = sEstaciones.getSelectedItem().toString();
+        String consulta = "SELECT Comgm3 FROM calidad_aire WHERE nomEstMet = '" + estacion + "'";
+        listaComgm3 = cargarComgm3(consulta);
+        consulta = "SELECT CO8hmgm3 FROM calidad_aire WHERE nomEstMet = '" + estacion + "'";
+        listaCO8hmgm3 = cargarCO8hmgm3(consulta);
+        consulta = "SELECT Nogm3 FROM calidad_aire WHERE nomEstMet = '" + estacion + "'";
+        listaNogm3 = cargarNogm3(consulta);
+        consulta = "SELECT NO2gm3 FROM calidad_aire WHERE nomEstMet = '" + estacion + "'";
+        listaNO2gm3 = cargarNO2gm3(consulta);
+        consulta = "SELECT NOXgm3 FROM calidad_aire WHERE nomEstMet = '" + estacion + "'";
+        listaNOXgm3 = cargarNOXgm3(consulta);
+        consulta = "SELECT PM10gm3 FROM calidad_aire WHERE nomEstMet = '" + estacion + "'";
+        listaPM10gm3 = cargarPM10gm3(consulta);
+        consulta = "SELECT PM25gm3 FROM calidad_aire WHERE nomEstMet = '" + estacion + "'";
+        listaPM25gm3 = cargarPM25gm3(consulta);
+        consulta = "SELECT SO2gm3 FROM calidad_aire WHERE nomEstMet = '" + estacion + "'";
+        listaSO2gm3 = cargarSO2gm3(consulta);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Calidad del aire de la estacion: " + estacion);
+        builder.setMessage("Comgm3: " + listaComgm3.get(0) + "\n" +
+                            "CO8hgm3: " + listaCO8hmgm3.get(0) + "\n" +
+                            "Nogm3: " + listaNogm3.get(0) + "\n" +
+                            "NO2gm3: " + listaNO2gm3.get(0) + "\n" +
+                            "NOXgm3: " + listaNOXgm3.get(0) + "\n" +
+                            "PM10gm3: " + listaPM10gm3.get(0) + "\n" +
+                            "PM25gm3: " + listaPM25gm3.get(0) + "\n" +
+                            "SO2gm3: " + listaSO2gm3.get(0)).setCancelable(true).show();
     }
 }
