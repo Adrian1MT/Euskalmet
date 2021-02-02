@@ -141,12 +141,14 @@ public class Listado_Municipios extends AppCompatActivity {
                 NombreMunicipios = conectar(sql);
                 if (NombreMunicipios.size()>0) {
                     relleno(); // Mostramos en el textView el nombre.
+                    ListaMunicipios.setVisibility(View.VISIBLE);
                 } else {
                     NombreMunicipios.add("");
                     relleno();
                     // Si la respuesta es null, una excepción ha ocurrido.
                    /* Toast.makeText(getApplicationContext(), "ERROR_COMUNICACION",
                             Toast.LENGTH_SHORT).show();*/
+                    ListaMunicipios.setVisibility(View.INVISIBLE);
                     Toast.makeText(getApplicationContext(), "Resultado Vacio",
                             Toast.LENGTH_SHORT).show();
                 }

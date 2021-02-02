@@ -135,6 +135,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="4dp"
+        android:onClick="Compartir"
         android:text="Compartir"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/btnCamara"

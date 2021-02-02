@@ -218,6 +218,7 @@ public class Listado_Favoritos extends AppCompatActivity {
                 NombreFavoritos.clear();
                 NombreFavoritos = conectarNombre(sql);
                 if (NombreFavoritos.size()>0) {
+                    ListaFavoritos.setVisibility(View.VISIBLE);
                     relleno(); // Mostramos en el textView el nombre.
                 } else {
                     NombreFavoritos.add("");

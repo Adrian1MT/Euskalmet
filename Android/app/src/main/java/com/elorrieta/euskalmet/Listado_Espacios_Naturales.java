@@ -138,12 +138,14 @@ public class Listado_Espacios_Naturales extends AppCompatActivity {
                 NombreEspaciosNaturales = conectar(sql);
                 if (NombreEspaciosNaturales.size()>0) {
                     relleno(); // Mostramos en el textView el nombre.
+                    ListaEspaciosNaturales.setVisibility(View.VISIBLE);
                 } else {
                     NombreEspaciosNaturales.add("");
                     relleno();
                     // Si la respuesta es null, una excepción ha ocurrido.
                    /* Toast.makeText(getApplicationContext(), "ERROR_COMUNICACION",
                             Toast.LENGTH_SHORT).show();*/
+                    ListaEspaciosNaturales.setVisibility(View.INVISIBLE);
                     Toast.makeText(getApplicationContext(), "Resultado Vacio",
                             Toast.LENGTH_SHORT).show();
                 }

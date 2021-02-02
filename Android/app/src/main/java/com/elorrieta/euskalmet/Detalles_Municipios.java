@@ -16,6 +16,7 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -58,7 +59,7 @@ public class Detalles_Municipios extends AppCompatActivity {
     ArrayList<String> listaSO2gm3 = new ArrayList<String>();
     String[] estaciones;
     String estacion;
-
+    Bitmap Bmap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,13 +104,35 @@ public class Detalles_Municipios extends AppCompatActivity {
         estaciones = listaEstaciones.toArray(estaciones);
         sEstaciones.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,estaciones));
     }
+    public void Compartir(View v) throws InterruptedException, IOException {
+        String enviarcorreo = "";
+        String ZONA = NombreMun;
+        String MensajeDescripcion = Descripcion.getText().toString();
 
+        // Defino mi Intent y hago uso del objeto ACTION_SEND
+        Intent intent = new Intent(Intent.ACTION_SEND);
+
+        // Defino los Strings Email, Asunto y Mensaje con la función putExtra
+        intent.putExtra(Intent.EXTRA_EMAIL,
+                new String[] { enviarcorreo });
+        intent.putExtra(Intent.EXTRA_SUBJECT, ZONA);
+        intent.putExtra(Intent.EXTRA_TEXT, MensajeDescripcion);
+       // intent.putExtra(Intent.EXTRA_STREAM,Bmap);
+        //intent.setType("image/png");
+
+        // Establezco el tipo de Intent
+        intent.setType("message/rfc822");
+
+        // Lanzo el selector de cliente de Correo
+        startActivity( Intent.createChooser(intent,"Elije un cliente de Correo:"));
+    }
     @SuppressLint("MissingSuperCall")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == SOLICITUD_PERMISO_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+            Bmap=imageBitmap;
             String Foto=convertirImgeString(imageBitmap);
             String sql= "INSERT INTO fotos( nomMunicipio, idUser, foto) VALUES ('" + NombreMun + "', '" + Usuario +"', '"+Foto+"')";
             try {
