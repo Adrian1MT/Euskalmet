@@ -427,6 +427,14 @@ public class Detalles_Municipios extends AppCompatActivity {
     }
     public void MisFotos(View poView) throws InterruptedException {
         Intent oIntent = new Intent(this, ListadoFotos.class);
+        oIntent.putExtra("Usuario",Usuario);
+        oIntent.putExtra("Opcion",1);
+        startActivity(oIntent);
+    }
+    public void TodasFotos(View poView) throws InterruptedException {
+        Intent oIntent = new Intent(this, ListadoFotos.class);
+        oIntent.putExtra("Lugar",NombreMun);
+        oIntent.putExtra("Opcion",2);
         startActivity(oIntent);
     }
     public void verCalidadAire(View v) throws InterruptedException {

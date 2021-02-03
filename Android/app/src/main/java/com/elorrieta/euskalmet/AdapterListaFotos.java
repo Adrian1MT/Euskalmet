@@ -64,13 +64,4 @@ public class AdapterListaFotos  extends RecyclerView.Adapter<AdapterListaFotos.V
             FOTOS.setImageBitmap(decodeByte);
         }
     }
-
-    private ArrayList conectar_select(String consulta) throws InterruptedException {
-        ClientThread clientThread = new ClientThread(consulta);
-        clientThread.columnaResultado = "nomEspNat";
-        Thread thread = new Thread(clientThread);
-        thread.start();
-        thread.join(); // Esperar respusta del servidor...
-        return clientThread.getResponse();
-    }
 }
