@@ -174,7 +174,7 @@ public class Top_Ranking extends AppCompatActivity {
         finish();
     }
     public void anterior(View poView){
-        Intent oIntent = new Intent(this, Listado_Playas.class);
+        Intent oIntent = new Intent(this, Listado_Municipios.class);
         oIntent.putExtra("usuario", usuario);
         startActivity(oIntent);
         finish();

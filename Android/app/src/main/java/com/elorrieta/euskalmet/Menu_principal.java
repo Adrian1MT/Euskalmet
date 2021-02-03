@@ -108,11 +108,6 @@ public class Menu_principal extends AppCompatActivity {
                 oIntent.putExtra("usuario", usuario);
                 startActivity(oIntent);
                 break;
-            case 4:
-                oIntent = new Intent(this, Listado_Playas.class);
-                oIntent.putExtra("usuario", usuario);
-                startActivity(oIntent);
-                break;
         }
     }
     public void TodoElListado(){
@@ -120,6 +115,5 @@ public class Menu_principal extends AppCompatActivity {
         NombreTarea.add(getString(R.string.ListEspNat));
         NombreTarea.add(getString(R.string.Favoritos));
         NombreTarea.add(getString(R.string.TRanking));
-        NombreTarea.add(getString(R.string.Playas));
     }
 }

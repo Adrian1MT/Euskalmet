@@ -22,7 +22,6 @@
         <activity android:name=".Detalles_Municipios" />
         <activity android:name=".EnviarCorreoRecordatorio" />
         <activity android:name=".Listado_Favoritos" />
-        <activity android:name=".Listado_Playas" />
         <activity android:name=".Top_Ranking" />
         <activity android:name=".Listado_Espacios_Naturales" />
         <activity android:name=".Listado_Municipios" />

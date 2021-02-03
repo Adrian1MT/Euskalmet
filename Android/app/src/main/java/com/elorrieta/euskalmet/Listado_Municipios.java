@@ -212,7 +212,7 @@ public class Listado_Municipios extends AppCompatActivity {
     }
 
     public void Siguiente(View poView){
-        Intent oIntent = new Intent(this, Listado_Playas.class);
+        Intent oIntent = new Intent(this, Top_Ranking.class);
         oIntent.putExtra("usuario", usuario);
         startActivity(oIntent);
         finish();
