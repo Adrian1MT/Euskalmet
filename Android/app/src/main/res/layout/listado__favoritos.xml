@@ -25,7 +25,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="180dp"
         android:ems="10"
-        android:hint="Busqueda de Zona"
+        android:hint="@string/BuscarZ"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -114,7 +114,7 @@
         android:layout_marginTop="36dp"
         android:checked="true"
         android:onClick="cambiarEspaciosNaturales"
-        android:text="Espacios Naturales"
+        android:text="@string/ESPNAT"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textZona" />
 
@@ -124,7 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:onClick="cambiarMunicipios"
-        android:text="Municipios"
+        android:text="@string/MUNI"
         app:layout_constraintBottom_toBottomOf="@+id/espacios"
         app:layout_constraintStart_toEndOf="@+id/espacios" />
 

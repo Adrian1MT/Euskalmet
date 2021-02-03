@@ -142,11 +142,9 @@ public class Listado_Espacios_Naturales extends AppCompatActivity {
                 } else {
                     NombreEspaciosNaturales.add("");
                     relleno();
-                    // Si la respuesta es null, una excepción ha ocurrido.
-                   /* Toast.makeText(getApplicationContext(), "ERROR_COMUNICACION",
-                            Toast.LENGTH_SHORT).show();*/
+
                     ListaEspaciosNaturales.setVisibility(View.INVISIBLE);
-                    Toast.makeText(getApplicationContext(), "Resultado Vacio",
+                    Toast.makeText(getApplicationContext(), R.string.nada,
                             Toast.LENGTH_SHORT).show();
                 }
             } else {

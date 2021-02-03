@@ -115,9 +115,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
-        android:onClick="Aparecer"
         android:maxLength="60"
-        android:text="Añadir Recordatorio Contraseña"
+        android:onClick="Aparecer"
+        android:text="@string/recordatorio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRepCont" />
 
@@ -127,7 +127,7 @@
         android:layout_height="41dp"
         android:layout_marginStart="76dp"
         android:ems="10"
-        android:hint="Frase Para Recordar La Contraseña"
+        android:hint="@string/txtrecordatorio"
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"

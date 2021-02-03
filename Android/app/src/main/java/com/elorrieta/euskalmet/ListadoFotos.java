@@ -38,11 +38,11 @@ public class ListadoFotos extends AppCompatActivity {
         otro= oExtras.getInt("otro");
         if (Opcion==1){
             usuario= oExtras.getString("Usuario");
-            mensaje.setText("Fotos del Usuario "+usuario);
+            mensaje.setText(getString(R.string.mio)+usuario);
             sql= "SELECT foto FROM fotos where idUser='"+usuario+"'";
         }else{
             Lugar= oExtras.getString("Lugar");
-            mensaje.setText("Fotos de "+Lugar);
+            mensaje.setText(getString(R.string.soyo)+Lugar);
             if(otro==3){
                 sql= "SELECT foto FROM fotos where nomMunicipio=(SELECT nomMunicipio FROM existe where nomEspNat='"+Lugar+"')";
             }else{
@@ -87,10 +87,8 @@ public class ListadoFotos extends AppCompatActivity {
                     StringList.add("");
                     relleno();
                     // Si la respuesta es null, una excepción ha ocurrido.
-                   /* Toast.makeText(getApplicationContext(), "ERROR_COMUNICACION",
-                            Toast.LENGTH_SHORT).show();*/
                     recycler.setVisibility(View.INVISIBLE);
-                    Toast.makeText(getApplicationContext(), "Resultado Vacio",
+                    Toast.makeText(getApplicationContext(), R.string.nada,
                             Toast.LENGTH_SHORT).show();
                 }
             } else {

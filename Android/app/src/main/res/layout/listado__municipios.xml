@@ -88,18 +88,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="168dp"
         android:ems="10"
-        android:hint="Busqueda de Zona"
+        android:hint="@string/BuscarZ"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/BTNFiltro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
-        android:text="Añadir Filtro Personalizado"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -107,12 +97,9 @@
         android:id="@+id/ListadoMUN"
         android:layout_width="330dp"
         android:layout_height="272dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
         android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView14"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BTNFiltro"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

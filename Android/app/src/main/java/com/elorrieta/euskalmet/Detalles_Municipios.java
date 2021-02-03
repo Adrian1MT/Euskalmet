@@ -551,14 +551,14 @@ public class Detalles_Municipios extends AppCompatActivity {
         consulta = "SELECT SO2gm3 FROM calidad_aire WHERE nomEstMet = '" + estacion + "'";
         listaSO2gm3 = cargarSO2gm3(consulta);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Calidad del aire de la estacion: " + estacion);
-        builder.setMessage("Comgm3: " + listaComgm3.get(0) + "\n" +
-                            "CO8hgm3: " + listaCO8hmgm3.get(0) + "\n" +
-                            "Nogm3: " + listaNogm3.get(0) + "\n" +
-                            "NO2gm3: " + listaNO2gm3.get(0) + "\n" +
-                            "NOXgm3: " + listaNOXgm3.get(0) + "\n" +
-                            "PM10gm3: " + listaPM10gm3.get(0) + "\n" +
-                            "PM25gm3: " + listaPM25gm3.get(0) + "\n" +
-                            "SO2gm3: " + listaSO2gm3.get(0)).setCancelable(true).show();
+        builder.setTitle(getString(R.string.cali) + estacion);
+        builder.setMessage( "Comgm3:        " + listaComgm3.get(0) + "\n" +
+                            "CO8hgm3:       " + listaCO8hmgm3.get(0) + "\n" +
+                            "Nogm3:         " + listaNogm3.get(0) + "\n" +
+                            "NO2gm3:        " + listaNO2gm3.get(0) + "\n" +
+                            "NOXgm3:        " + listaNOXgm3.get(0) + "\n" +
+                            "PM10gm3:       " + listaPM10gm3.get(0) + "\n" +
+                            "PM25gm3:       " + listaPM25gm3.get(0) + "\n" +
+                            "SO2gm3:        " + listaSO2gm3.get(0)).setCancelable(true).show();
     }
 }

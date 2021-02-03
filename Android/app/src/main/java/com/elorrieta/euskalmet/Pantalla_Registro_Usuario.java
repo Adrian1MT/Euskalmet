@@ -62,13 +62,12 @@ public class Pantalla_Registro_Usuario extends AppCompatActivity {
         consulta = "SELECT idUser FROM usuarios WHERE idUser='" + Usuario.trim() +"'";
         ListaUsuario = conectarConsultarUsuario(consulta);
         if(!ListaUsuario.isEmpty()){
-            Toast.makeText(this, "El usuario ya existe", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.usuarioExiste, Toast.LENGTH_LONG).show();
             return;
         }
 
         if (Contraseña.equals(RepContraseña)){
             Toast.makeText(this,R.string.ContraBuena,Toast.LENGTH_SHORT).show();
-            // "INSERT INTO usuarios(idUser, password, recuperacion) VALUES ('"Usuario"', '"Contraseña"', '')"
             String Sql="INSERT INTO usuarios(idUser, password, recuperacion) VALUES ('" + Usuario + "', '" + Contraseña +"', '"+Recordar+"')";
             conectarInsertarUsuario(Sql);
 

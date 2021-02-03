@@ -105,7 +105,7 @@
         android:layout_marginTop="532dp"
         android:checked="true"
         android:onClick="cambiarasc"
-        android:text="Primeras Posiciones"
+        android:text="@string/Primeras"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -117,7 +117,7 @@
         android:layout_marginEnd="44dp"
         android:checked="false"
         android:onClick="cambiardes"
-        android:text="Ultimas Posiciones"
+        android:text="@string/ultimas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

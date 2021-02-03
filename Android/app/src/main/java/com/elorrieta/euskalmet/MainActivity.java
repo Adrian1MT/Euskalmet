@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         Imagen.setImageResource(R.drawable.logotipo);
         Imagen.setOnClickListener(this::mover_ObjectAnimator);
 
-   
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             consulta = "SELECT PASSWORD FROM usuarios WHERE idUser='" + Usuario.trim() +"'";
             listaContrasenia = conectar(consulta);
             if(listaContrasenia.isEmpty()){
-                Toast.makeText(this, "El usuario no existe", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.NoExisteUser, Toast.LENGTH_LONG).show();
                 return;
             }else{
                 if(listaContrasenia.get(0).equals(Contraseña.trim())){

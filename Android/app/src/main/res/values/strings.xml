@@ -1,7 +1,7 @@
 <resources>
     //Pantalla Principal Parte1.xml
     ----------------------------------------------------------------------------------------------------------------------------------------------
-    //Mirar si se podria cambiar las fotos
+    <string name="IDIOMA">Castellano</string>
     <string name="app_name">Euskalmet</string>
     <string name="Tocar">( PULSAR PARA EMPEZAR )</string>
 
@@ -12,14 +12,16 @@
 
     <string name="USUARIO">USUARIO:</string>
     <string name="Pass">CONTRASEÑA:</string>
-
+    <string name="usuario">USUARIO</string>
+    <string name="pass">USUARIO</string>
     //MainActivity.java
     ----------------------------------------------------------------------------------------------------------------------------------------------
     <string name="Acerca">Acerca De...</string>
-    //Pendiente de mejora---------
     <string name="MensajeAcerca">Aplicacion Metereologica cuyo cometido es informar a los usuarios sobre el estado del tiempo en ciertas localidades</string>
     //-----------------------
-    <string name="Entendido">ENTENDIDOS</string>
+    <string name="Recordar">Recordar Contraseña</string>
+    <string name="cerrar">Cerrar Sesion</string>
+    <string name="Entendido">ENTENDIDO</string>
 
     <string name="CamposVacios">RELLENA LOS CAMPOS VACIOS POR FAVOR</string>
     <string name="NoExisteUser">No existe ningun usuario con ese nombre</string>
@@ -38,6 +40,9 @@
     <string name="RepPass">Repetir Contraseña:</string>
     <string name="TextRepPass">Repetir Contraseña</string>
 
+    <string name="recordatorio">Añadir Recordatorio Contraseña</string>
+    <string name="txtrecordatorio">Frase Para Recordar La Contraseña</string>
+
     <string name="Cancel">cancelar</string>
     <string name="Guarda">Guardar</string>
 
@@ -45,18 +50,70 @@
     ----------------------------------------------------------------------------------------------------------------------------------------------
 
     <string name="CamposVaciosRegis">Si quieres Registrarte por lo menos rellena los campos</string>
-    <string name="ContraBuena">Coincide Las Contraseñas</string>
+    <string name="ContraBuena">Usuario Registrado Correctamente</string>
     <string name="ContraMala">No Coincide Las Contraseñas</string>
+    <string name="usuarioExiste">El usuario ya existe</string>
 
+    //CORREO
+    -------------------------------------------------------------------------------------------------------------------------------------
+    <string name="EnviCorreo">ENVIAR CORREO</string>
+    <string name="EcribirUser">Escribe Tu Usuario:</string>
+    <string name="correo">CORREO ELECTRONICO:</string>
+    <string name="txtcorreo">Correo Electronico</string>
+    <string name="ENVIAR">ENVIAR</string>
     //Menu_Principal.java
     ----------------------------------------------------------------------------------------------------------------------------------------------
     <string name="ListMunicipios">Listado de Municipios</string>
     <string name="ListEspNat">Listado de Espacios Naturales</string>
     <string name="Favoritos">Favoritos</string>
     <string name="TRanking">Top Ranking</string>
-    <string name="Playas">Las Playas</string>
+
+    <string name="MensajeAcerca2">Este es el menu principal donde puedes visualizar varias listas, tus favoritos y un Top ranking</string>
+
+    //ListadoMunicipios.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="BuscarZ">Busqueda de Zona</string>
+
+    //ListadoMunicipios.java
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="nada">Resultado Vacio</string>
+    <string name="mensajemuni">Aqui podras visualizar todos los municipios de sus respectivas provincias</string>
+
+    //ListadoEspNat.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="ESPNAT">Espacios Naturales</string>
+    <string name="MUNI">Municipios</string>
+
+    //TopRanking.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="Primeras">Primeras Posiciones</string>
+    <string name="ultimas">Ultimas Posiciones</string>
+
+    //DetallesMunicipios.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="detalle">DETALLES DE: </string>
+    <string name="descrip">Descripcion: </string>
+    <string name="ver">Ver Calidad del aire</string>
+    <string name="map">Ver Mapa</string>
+    <string name="Compartir">Compartir</string>
+    <string name="miis">MIS FOTOS</string>
+    <string name="otro">FOTOS DEL LUGAR</string>
 
 
+    //DetallesMunicipios.java
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="cali">Calidad del aire de la estacion: </string>
+
+    //FOTOS.java
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="mio">Fotos del Usuario </string>
+    <string name="soyo">Fotos de </string>
+
+    //Mapa.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="ir">ir a </string>
+    <string name="animar">animar a </string>
+    <string name="marca">marcador</string>
     <!-- Strings used for fragments for navigation --> //NO Borrar
     ----------------------------------------------------------------------------------------------------------------------------------------------
     <string name="title_activity_textcenter">Textcenter</string>

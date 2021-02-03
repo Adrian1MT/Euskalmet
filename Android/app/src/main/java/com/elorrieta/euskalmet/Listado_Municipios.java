@@ -196,9 +196,9 @@ public class Listado_Municipios extends AppCompatActivity {
         int id = item.getItemId();
         if (id==R.id.AcercaDe) {
             AlertDialog.Builder msj = new AlertDialog.Builder(this);
-            msj.setTitle("AcercaDe");
-            msj.setMessage("R.string.MensajeAcerca");
-            msj.setNeutralButton("R.string.Entendido", new DialogInterface.OnClickListener() {
+            msj.setTitle(R.string.Acerca);
+            msj.setMessage(R.string.mensajemuni);
+            msj.setNeutralButton(R.string.Entendido, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                 }});
             AlertDialog mostrarDialogo =msj.create();

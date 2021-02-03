@@ -23,7 +23,6 @@ public class Menu_principal extends AppCompatActivity {
     RecyclerView recycler;
     ArrayList<String> NombreTarea = new ArrayList<String>();
     ImageView Imagen;
-    TextView time;
     String usuario;
 
     @Override
@@ -37,7 +36,7 @@ public class Menu_principal extends AppCompatActivity {
         Imagen= (ImageView)findViewById(R.id.imageView3);
         Imagen.setImageResource(R.drawable.logotipo);
         recycler= (RecyclerView)findViewById(R.id.recycler);
-        time= (TextView)findViewById(R.id.tiempo);
+
 
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
@@ -54,13 +53,8 @@ public class Menu_principal extends AppCompatActivity {
         });
 
         recycler.setAdapter(adapter);
+    }
 
-        hora();
-    }
-    public void hora(){
-            String currentDateTimeString = DateFormat.getTimeInstance().format(new Date());
-            time.setText(currentDateTimeString);
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_seleccion, menu);
@@ -72,9 +66,9 @@ public class Menu_principal extends AppCompatActivity {
         int id = item.getItemId();
         if (id==R.id.AcercaDe) {
             AlertDialog.Builder msj = new AlertDialog.Builder(this);
-            msj.setTitle("AcercaDe");
-            msj.setMessage("R.string.MensajeAcerca");
-            msj.setNeutralButton("R.string.Entendido", new DialogInterface.OnClickListener() {
+            msj.setTitle(R.string.Acerca);
+            msj.setMessage(R.string.MensajeAcerca2);
+            msj.setNeutralButton(R.string.Entendido, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                 }});
             AlertDialog mostrarDialogo =msj.create();

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //Pantalla Principal Parte1.xml
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------
+    //Mirar si se podria cambiar las fotos
+    <string name="IDIOMA">Euskera</string>
+    <string name="app_name">Euskalmet</string>
+    <string name="Tocar">( PULTSATU HASTEKO )</string>
+
+    //Pantalla Principal Parte2.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------------
+    <string name="Login">SAIOA HASI</string>
+    <string name="Registro">ERREGISTRATU</string>
+
+    <string name="USUARIO">Erabiltzaile:</string>
+    <string name="Pass">Pasahitza:</string>
+    <string name="usuario">Erabiltzaile</string>
+    <string name="pass">Pasahitza</string>
+    //MainActivity.java
+    ----------------------------------------------------------------------------------------------------------------------------------------------
+    <string name="Acerca">Honi Buruz ...</string>
+    <string name="MensajeAcerca">Aplikazio meteorologikoa. Helburua zenbait tokitan eguraldiaren berri ematea da</string>
+    //-----------------------
+    <string name="Recordar">Gogoratu pasahitza</string>
+    <string name="cerrar">Saioa itxi</string>
+    <string name="Entendido">ULERTUTA</string>
+
+    <string name="CamposVacios">BETE EREMU HUTSAK MESEDEZ</string>
+    <string name="NoExisteUser">Ez dago izen hori duen erabiltzailerik</string>
+
+    <string name="Welcome">Ongi etorria</string>
+    <string name="UserPassMalEscrito">Erabiltzailea edo pasahitza ez datoz bat</string>
+
+    //Registrarse.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------------
+    <string name="USer">Erabiltzaile:</string>
+    <string name="NomUSer">Erabiltzaile izena</string>
+
+    <string name="Passer">Pasahitza:</string>
+    <string name="ConPass">pasahitz berria</string>
+
+    <string name="RepPass">Pasahitza errepikatu:</string>
+    <string name="TextRepPass">Pasahitza errepikatu</string>
+
+    <string name="recordatorio">Gehitu pasahitz abisua</string>
+    <string name="txtrecordatorio">Pasahitza gogoratzeko esaldia</string>
+
+    <string name="Cancel">itsuli</string>
+    <string name="Guarda">Gorde</string>
+
+    //Registrarse.java
+    ----------------------------------------------------------------------------------------------------------------------------------------------
+
+    <string name="CamposVaciosRegis">Erregistratu nahi baduzu gutxienez bete eremuak</string>
+    <string name="ContraBuena">Erabiltzailea behar bezala erregistratuta dago</string>
+    <string name="ContraMala">Pasahitzak ez datoz bat</string>
+    <string name="usuarioExiste">Erabiltzailea existitzen da jada</string>
+    //CORREO
+    -------------------------------------------------------------------------------------------------------------------------------------
+    <string name="EnviCorreo">BIDALI MAILA</string>
+    <string name="EcribirUser">Idatzi zure erabiltzaile izena:</string>
+    <string name="correo">Mezu elektronikoa:</string>
+    <string name="txtcorreo">Mezu elektronikoa</string>
+    <string name="ENVIAR">BIDALI</string>
+    //Menu_Principal.java
+    ----------------------------------------------------------------------------------------------------------------------------------------------
+    <string name="ListMunicipios">Udalerrien zerrenda</string>
+    <string name="ListEspNat">Naturguneen zerrenda</string>
+    <string name="Favoritos">Gogokoak</string>
+    <string name="TRanking">Goi Mailako Sailkapena</string>
+
+    <string name="MensajeAcerca2">Hau da menu nagusia eta bertan hainbat zerrenda, zure gogokoenak eta sailkapen nagusiena ikusi ahal izango dituzu</string>
+
+    //ListadoMunicipios.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="BuscarZ">Bilatu gunea</string>
+
+    //ListadoMunicipios.java
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="nada">Emaitza hutsa</string>
+    <string name="mensajemuni">Hemen dagozkien probintzietako udalerri guztiak ikus ditzakezu</string>
+
+    //ListadoEspNat.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="ESPNAT">Espazio naturalak</string>
+    <string name="MUNI">Udalerriak</string>
+
+    //TopRanking.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="Primeras">Lehen postuak</string>
+    <string name="ultimas">Azken postuak</string>
+
+    //DetallesMunicipios.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="detalle">HONEN XEHETASUNAK: </string>
+    <string name="descrip">Deskribapena: </string>
+    <string name="ver">Ikus Aize kalitatea</string>
+    <string name="map">Ikusi mapa</string>
+    <string name="Compartir">Partekatu</string>
+    <string name="miis">NIRE ARGAZKI</string>
+    <string name="otro">LEKUA ARGAZKI</string>
+
+    //DetallesMunicipios.java
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="cali">Geltokiaren airearen kalitatea: </string>
+
+    //FOTOS.java
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="mio">Erabiltzailearen argazkiak </string>
+    <string name="soyo">Argazkiak </string>
+
+    //Mapa.xml
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <string name="ir">joan </string>
+    <string name="animar">joan animatu </string>
+    <string name="marca">markatzailea</string>
+    <!-- Strings used for fragments for navigation --> //NO Borrar
+    ----------------------------------------------------------------------------------------------------------------------------------------------
+    <string name="title_activity_textcenter">Textcenter</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_favoritos">Favoritos</string>
+
+</resources>

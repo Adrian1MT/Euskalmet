@@ -4,8 +4,8 @@
 
     <item
         android:id="@+id/Opcion1Acerca"
-        android:title="Acerca de ..." />
+        android:title="@string/Acerca" />
     <item
         android:id="@+id/Opcion2Recordar"
-        android:title="Recordar Contraseña" />
+        android:title="@string/Recordar" />
 </menu>

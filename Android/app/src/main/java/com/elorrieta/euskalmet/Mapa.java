@@ -49,13 +49,6 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, Google
         latitud = result.get(0).getLatitude();
         longitud = result.get(0).getLongitude();
 
-
-
-        //IR=(Button) findViewById(R.id.button1);
-        //IR.setTag("Ir a"+nombre);
-        //Animado=(Button) findViewById(R.id.button2);
-        //Animado.setTag("Animado a"+nombre);
-
         mapa();
         setContentView(R.layout.mapa);
         SupportMapFragment mapFragment = (SupportMapFragment)

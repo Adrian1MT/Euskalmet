@@ -10,8 +10,8 @@
         android:id="@+id/textUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="348dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="352dp"
         android:text="@string/USUARIO"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -23,12 +23,12 @@
         android:id="@+id/EditUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
         android:layout_marginTop="340dp"
+        android:layout_marginEnd="32dp"
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="@string/usuario"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/textUser"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -48,12 +48,12 @@
         android:id="@+id/EditContraseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="@string/pass"
         android:inputType="textPassword"
-        app:layout_constraintStart_toEndOf="@+id/textPass"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EditUsuario" />
 
     <Button
@@ -94,12 +94,12 @@
         android:id="@+id/textTocar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
         android:layout_marginBottom="176dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/Tocar"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -127,7 +127,7 @@ public class Top_Ranking extends AppCompatActivity {
                    /* Toast.makeText(getApplicationContext(), "ERROR_COMUNICACION",
                             Toast.LENGTH_SHORT).show();*/
                     ListaMunicipios.setVisibility(View.INVISIBLE);
-                    Toast.makeText(getApplicationContext(), "Resultado Vacio",
+                    Toast.makeText(getApplicationContext(), R.string.nada,
                             Toast.LENGTH_SHORT).show();
                 }
             } else {
