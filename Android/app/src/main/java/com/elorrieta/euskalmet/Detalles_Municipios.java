@@ -3,6 +3,7 @@ package com.elorrieta.euskalmet;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -143,7 +144,7 @@ public class Detalles_Municipios extends AppCompatActivity {
                 new String[] { enviarcorreo });
         intent.putExtra(Intent.EXTRA_SUBJECT, ZONA);
         intent.putExtra(Intent.EXTRA_TEXT, MensajeDescripcion);
-       // intent.putExtra(Intent.EXTRA_STREAM,Bmap);
+        // intent.putExtra(Intent.EXTRA_STREAM,Bmap);
         //intent.setType("image/png");
 
         // Establezco el tipo de Intent
@@ -151,7 +152,36 @@ public class Detalles_Municipios extends AppCompatActivity {
 
         // Lanzo el selector de cliente de Correo
         startActivity( Intent.createChooser(intent,"Elije un cliente de Correo:"));
-    }
+        /*
+        File cachePath = new File(this.getCacheDir(),"imagenView");
+        cachePath.mkdir();
+        FileOutputStream stream= new FileOutputStream(cachePath+"/image.pnn");
+        Bmap.compress(Bitmap.CompressFormat.PNG,100,stream);
+        stream.close();
+        File imagePath = new File(this.getCacheDir(),"imagenView");
+        File newFile = new File(imagePath,"image.png");
+        Uri contentUri = FileProvider.getUriForFile(this,BuildConfig.APPLICATION_ID+".fileprovider",newFile);
+        if (contentUri!=null){
+
+            Intent intent = new Intent();
+            intent.putExtra(Intent.EXTRA_EMAIL,
+                    new String[] { enviarcorreo });
+            intent.putExtra(Intent.EXTRA_SUBJECT, ZONA);
+            intent.putExtra(Intent.EXTRA_TEXT, MensajeDescripcion);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.setDataAndType(contentUri,getContentResolver().getType(contentUri));
+            intent.putExtra(Intent.EXTRA_STREAM,contentUri);
+            intent.setType("image/png");
+
+            // Lanzo el selector de cliente de Correo
+            startActivity( Intent.createChooser(intent,"Elije un cliente de Correo:"));
+        }else{
+            Toast.makeText(this,"aaaaa",Toast.LENGTH_SHORT).show();
+        }
+         */
+        }
+
+    
     @SuppressLint("MissingSuperCall")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
