@@ -31,7 +31,13 @@ public class Pantalla_Registro_Usuario extends AppCompatActivity {
         Recordar = findViewById(R.id.checkRecordar);
 
         Imagen= (ImageView)findViewById(R.id.imageView2);
-        Imagen.setImageResource(R.drawable.logotipo);
+        String idioma;
+        idioma=(getString(R.string.IDIOMA));
+        if (idioma.equals("Castellano")){
+            Imagen.setImageResource(R.drawable.logotipo);
+        }else{
+            Imagen.setImageResource(R.drawable.logotipoeus);
+        }
     }
 
     public void Cancelar(View poView){

@@ -22,7 +22,13 @@ public class EnviarCorreoRecordatorio extends AppCompatActivity {
         setContentView(R.layout.enviar_correo_recordatorio);
 
         Imagen= (ImageView)findViewById(R.id.Logotipo);
-        Imagen.setImageResource(R.drawable.logotipo);
+        String idioma;
+        idioma=(getString(R.string.IDIOMA));
+        if (idioma.equals("Castellano")){
+            Imagen.setImageResource(R.drawable.logotipo);
+        }else{
+            Imagen.setImageResource(R.drawable.logotipoeus);
+        }
 
         correo = findViewById(R.id.TxtCorreo);
         Usuario = findViewById(R.id.TxtUsuario);

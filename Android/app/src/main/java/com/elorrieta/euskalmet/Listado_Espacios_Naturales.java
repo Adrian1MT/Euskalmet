@@ -41,7 +41,13 @@ public class Listado_Espacios_Naturales extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listado__espacios__naturales);
         Imagen= (ImageView)findViewById(R.id.imagennatural);
-        Imagen.setImageResource(R.drawable.espaciosnaturales);
+        String idioma;
+        idioma=(getString(R.string.IDIOMA));
+        if (idioma.equals("Castellano")){
+            Imagen.setImageResource(R.drawable.espaciosnaturales);
+        }else{
+            Imagen.setImageResource(R.drawable.espnateu);
+        }
 
         ListaEspaciosNaturales = (RecyclerView)findViewById(R.id.ListadoESP);
 

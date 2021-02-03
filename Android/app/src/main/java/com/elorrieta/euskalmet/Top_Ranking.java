@@ -38,7 +38,14 @@ public class Top_Ranking extends AppCompatActivity {
         ListaMunicipios.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         Imagen= (ImageView)findViewById(R.id.imagenranking);
-        Imagen.setImageResource(R.drawable.ranking);
+        String idioma;
+        idioma=(getString(R.string.IDIOMA));
+        if (idioma.equals("Castellano")){
+            Imagen.setImageResource(R.drawable.ranking);
+        }else{
+            Imagen.setImageResource(R.drawable.topeu);
+        }
+
         bizkaia= (CheckBox)findViewById(R.id.checkBizkaia3);
         alava= (CheckBox)findViewById(R.id.checkAlaba3);
         gipuzkoa= (CheckBox)findViewById(R.id.checkGipuzkoa3);

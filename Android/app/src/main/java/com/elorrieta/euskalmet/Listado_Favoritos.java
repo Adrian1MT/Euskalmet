@@ -48,7 +48,14 @@ public class Listado_Favoritos extends AppCompatActivity {
         usuario = extras.getString("usuario");
 
         Imagen= (ImageView)findViewById(R.id.ImagenFavorito);
-        Imagen.setImageResource(R.drawable.favoritos);
+        String idioma;
+        idioma=(getString(R.string.IDIOMA));
+        if (idioma.equals("Castellano")){
+            Imagen.setImageResource(R.drawable.favoritos);
+        }else{
+            Imagen.setImageResource(R.drawable.favoritoseu);
+        }
+
 
         ListaFavoritos= (RecyclerView)findViewById(R.id.recycler);
 

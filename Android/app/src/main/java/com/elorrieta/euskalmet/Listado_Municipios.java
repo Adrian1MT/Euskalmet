@@ -45,8 +45,13 @@ public class Listado_Municipios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listado__municipios);
         Imagen= (ImageView)findViewById(R.id.imagendetallesmunicipio);
-        Imagen.setImageResource(R.drawable.municipios);
-
+        String idioma;
+        idioma=(getString(R.string.IDIOMA));
+        if (idioma.equals("Castellano")){
+            Imagen.setImageResource(R.drawable.municipios);
+        }else{
+            Imagen.setImageResource(R.drawable.listamunieu);
+        }
         ListaMunicipios= (RecyclerView)findViewById(R.id.ListadoMUN);
 
         ListaMunicipios.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

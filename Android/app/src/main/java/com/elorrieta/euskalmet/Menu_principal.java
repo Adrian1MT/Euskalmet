@@ -34,7 +34,13 @@ public class Menu_principal extends AppCompatActivity {
 
 
         Imagen= (ImageView)findViewById(R.id.imageView3);
-        Imagen.setImageResource(R.drawable.logotipo);
+        String idioma;
+        idioma=(getString(R.string.IDIOMA));
+        if (idioma.equals("Castellano")){
+            Imagen.setImageResource(R.drawable.logotipo);
+        }else{
+            Imagen.setImageResource(R.drawable.logotipoeus);
+        }
         recycler= (RecyclerView)findViewById(R.id.recycler);
 
 

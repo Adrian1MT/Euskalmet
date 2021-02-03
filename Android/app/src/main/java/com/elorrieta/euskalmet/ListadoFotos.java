@@ -55,7 +55,13 @@ public class ListadoFotos extends AppCompatActivity {
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
-        fotito.setImageResource(R.drawable.logotipo);
+        String idioma;
+        idioma=(getString(R.string.IDIOMA));
+        if (idioma.equals("Castellano")){
+            fotito.setImageResource(R.drawable.logotipo);
+        }else{
+            fotito.setImageResource(R.drawable.logotipoeus);
+        }
         Buscar();
     }
 

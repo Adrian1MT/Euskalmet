@@ -55,7 +55,14 @@ public class MainActivity extends AppCompatActivity {
         Invisible();
 
         Imagen= (ImageView)findViewById(R.id.imageView);
-        Imagen.setImageResource(R.drawable.logotipo);
+        String idioma;
+        idioma=(getString(R.string.IDIOMA));
+        if (idioma.equals("Castellano")){
+            Imagen.setImageResource(R.drawable.logotipo);
+        }else{
+            Imagen.setImageResource(R.drawable.logotipoeus);
+        }
+
         Imagen.setOnClickListener(this::mover_ObjectAnimator);
 
     }
