@@ -6,15 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".Top_Ranking">
 
+    <CheckBox
+        android:id="@+id/checkAlaba3"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="36dp"
+        android:onClick="cambiaralava"
+        android:text="ALABA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBizkaia3"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="196dp"
+        android:checked="false"
+        android:onClick="cambiarBizkaia"
+        android:text="BIZKAIA"
+        app:layout_constraintEnd_toStartOf="@+id/checkAlaba3"
+        app:layout_constraintHorizontal_bias="0.283"
+        app:layout_constraintStart_toEndOf="@+id/checkGipuzkoa3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkGipuzkoa3"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="196dp"
+        android:checked="true"
+        android:onClick="cambiargipuzkoa"
+        android:text="GIPUZKOA"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="410dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="632dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/button_onoff_indicator_on" />
+
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="167dp"
         android:layout_height="53dp"
+        android:layout_marginTop="632dp"
+        android:layout_marginEnd="4dp"
         android:onClick="Siguiente"
         android:rotationY="180"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <ImageView
@@ -30,9 +81,43 @@
         android:id="@+id/imageView4"
         android:layout_width="167dp"
         android:layout_height="53dp"
+        android:layout_marginTop="632dp"
         android:onClick="anterior"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Ranking"
+        android:layout_width="401dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/asc"
+        android:layout_width="124dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="532dp"
+        android:checked="true"
+        android:onClick="cambiarasc"
+        android:text="Primeras Posiciones"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="532dp"
+        android:layout_marginEnd="44dp"
+        android:checked="false"
+        android:onClick="cambiardes"
+        android:text="Ultimas Posiciones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
