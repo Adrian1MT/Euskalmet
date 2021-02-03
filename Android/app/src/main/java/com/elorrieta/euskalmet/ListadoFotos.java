@@ -22,7 +22,6 @@ public class ListadoFotos extends AppCompatActivity {
     String sql;
     private ConnectivityManager connectivityManager = null;
     RecyclerView recycler;
-    ArrayList<ImageView> ImagenList = new ArrayList<ImageView>();
     ArrayList<String> StringList = new ArrayList<String>();
     ImageView fotito;
     String usuario, Lugar;
@@ -58,8 +57,8 @@ public class ListadoFotos extends AppCompatActivity {
     }
 
     public void relleno(){
-        AdapterMenu adapter = new AdapterMenu(StringList);
-        //AdapterListaFotos adapter = new AdapterListaFotos(ImagenList);
+        //AdapterMenu adapter = new AdapterMenu(StringList);
+        AdapterListaFotos adapter = new AdapterListaFotos(StringList);
         adapter.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View view) {

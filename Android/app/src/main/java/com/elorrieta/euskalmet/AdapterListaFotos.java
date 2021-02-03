@@ -13,13 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class AdapterListaFotos  extends RecyclerView.Adapter<AdapterListaFotos.ViewHolderDatos>{
-    ArrayList<ImageView> ListaImagenes;
     ArrayList<String> FotosString;
-    String Usuario;
+
     private View.OnClickListener listener;
 
-    public AdapterListaFotos(ArrayList<ImageView> ListaImagenes) {
-        this.ListaImagenes = ListaImagenes;
+    public AdapterListaFotos(ArrayList<String> ListaImagenes) {
+        this.FotosString = ListaImagenes;
     }
     @NonNull
     @Override
