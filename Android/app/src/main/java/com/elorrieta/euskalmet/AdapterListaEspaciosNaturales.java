@@ -1,6 +1,7 @@
 package com.elorrieta.euskalmet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,7 +102,12 @@ public class AdapterListaEspaciosNaturales extends RecyclerView.Adapter<AdapterL
                     }
                     break;
                 case R.id.idDato:
+                    Intent oIntent = new Intent(context, Detalles_Municipios.class);
 
+                    oIntent.putExtra("NomEsp",dato.getText().toString());
+                    oIntent.putExtra("Usuario",Usuario);
+                    oIntent.putExtra("Opcion",2);
+                    context.startActivity(oIntent);
                     break;
             }
         }

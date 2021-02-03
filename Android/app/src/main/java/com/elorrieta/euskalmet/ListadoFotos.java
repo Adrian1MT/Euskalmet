@@ -26,7 +26,7 @@ public class ListadoFotos extends AppCompatActivity {
     ImageView fotito;
     String usuario, Lugar;
     TextView mensaje;
-    int Opcion;
+    int Opcion,otro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,29 +35,31 @@ public class ListadoFotos extends AppCompatActivity {
 
         Bundle oExtras = getIntent().getExtras();
         Opcion= oExtras.getInt("Opcion");
+        otro= oExtras.getInt("otro");
         if (Opcion==1){
             usuario= oExtras.getString("Usuario");
             mensaje.setText("Fotos del Usuario "+usuario);
             sql= "SELECT foto FROM fotos where idUser='"+usuario+"'";
         }else{
             Lugar= oExtras.getString("Lugar");
-            mensaje.setText("Fotos del Municipio "+Lugar);
+            mensaje.setText("Fotos de "+Lugar);
+            if(otro==3){
+                sql= "SELECT foto FROM fotos where nomMunicipio=(SELECT nomMunicipio FROM existe where nomEspNat='"+Lugar+"')";
+            }else{
             sql= "SELECT foto FROM fotos where nomMunicipio='"+Lugar+"'";
+            }
         }
-
 
         fotito= (ImageView)findViewById(R.id.FOTO);
         recycler= (RecyclerView)findViewById(R.id.ReciclerFoto);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
-
         fotito.setImageResource(R.drawable.logotipo);
         Buscar();
     }
 
     public void relleno(){
-        //AdapterMenu adapter = new AdapterMenu(StringList);
         AdapterListaFotos adapter = new AdapterListaFotos(StringList);
         adapter.setOnClickListener(new View.OnClickListener() {
            @Override

@@ -106,6 +106,7 @@ public class AdapterListaMunicipios extends RecyclerView.Adapter<AdapterListaMun
 
                     oIntent.putExtra("Municipio",dato.getText().toString());
                     oIntent.putExtra("Usuario",Usuario);
+                    oIntent.putExtra("Opcion",1);
                     context.startActivity(oIntent);
                     break;
             }

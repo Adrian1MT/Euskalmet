@@ -43,8 +43,8 @@ public class Detalles_Municipios extends AppCompatActivity {
     static final int SOLICITUD_PERMISO_IMAGE_CAPTURE = 0;
     static final int SOLICITUD_PERMISO_WRITE_EXTERNAL_STORAGE = 0;
     ImageView imagen;
-    Button guardar;
-    String NombreMun,Usuario;
+    Button guardar,detalles;
+    String NombreMun,Usuario,EspacioNat;
     TextView TxtMun;
     EditText Descripcion;
     Spinner sEstaciones;
@@ -60,6 +60,7 @@ public class Detalles_Municipios extends AppCompatActivity {
     String[] estaciones;
     String estacion;
     Bitmap Bmap;
+    int opcion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,14 +71,28 @@ public class Detalles_Municipios extends AppCompatActivity {
         guardar = (Button) findViewById(R.id.btnGuardar);
         TxtMun= (TextView) findViewById(R.id.textMunicipio);
         Descripcion= (EditText) findViewById(R.id.TextDescripcion);
+        detalles= (Button) findViewById(R.id.CALIDAD);
 
+        String Consulta;
 
         ArrayList<String> ListaDescripcion = new ArrayList<String>();
         Bundle oExtras = getIntent().getExtras();
-        NombreMun = oExtras.getString("Municipio");
+        opcion = oExtras.getInt("Opcion");
+        if (opcion==1){
+            NombreMun = oExtras.getString("Municipio");
+        }else{
+            EspacioNat= oExtras.getString("NomEsp");
+        }
+
         Usuario= oExtras.getString("Usuario");
-        TxtMun.setText(NombreMun);
-        String Consulta= "SELECT descripcion FROM municipios WHERE nombre='" + NombreMun +"'";
+        if (opcion==1){
+            TxtMun.setText(NombreMun);
+            Consulta= "SELECT descripcion FROM municipios WHERE nombre='" + NombreMun +"'";
+        }else{
+            TxtMun.setText(EspacioNat);
+            Consulta= "SELECT descripcion FROM espacios_naturales WHERE nombre='" + EspacioNat +"'";
+        }
+
         try {
             ListaDescripcion = cargarDescripcion(Consulta);
         } catch (InterruptedException e) {
@@ -88,14 +103,20 @@ public class Detalles_Municipios extends AppCompatActivity {
         }else {
             Descripcion.setText(ListaDescripcion.get(0));
         }
+        if (opcion==1){
+            Consulta = "SELECT nombre FROM estaciones_metereologicas WHERE nomMunicipio = '" + NombreMun + "'";
+        }else{
+            Consulta = "SELECT nombre FROM estaciones_metereologicas WHERE nomMunicipio = '" + EspacioNat + "'";
+        }
 
-        Consulta = "SELECT nombre FROM estaciones_metereologicas WHERE nomMunicipio = '" + NombreMun + "'";
         try {
             listaEstaciones = cargarEstaciones(Consulta);
             if (listaEstaciones.size()>0){
                 sEstaciones.setVisibility(View.VISIBLE);
+                detalles.setVisibility(View.VISIBLE);
             }else{
                 sEstaciones.setVisibility(View.INVISIBLE);
+                detalles.setVisibility(View.INVISIBLE);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -106,7 +127,12 @@ public class Detalles_Municipios extends AppCompatActivity {
     }
     public void Compartir(View v) throws InterruptedException, IOException {
         String enviarcorreo = "";
-        String ZONA = NombreMun;
+        String ZONA;
+        if (opcion==1){
+            ZONA = NombreMun;
+        }else{
+            ZONA = EspacioNat;
+        }
         String MensajeDescripcion = Descripcion.getText().toString();
 
         // Defino mi Intent y hago uso del objeto ACTION_SEND
@@ -134,7 +160,20 @@ public class Detalles_Municipios extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             Bmap=imageBitmap;
             String Foto=convertirImgeString(imageBitmap);
-            String sql= "INSERT INTO fotos( nomMunicipio, idUser, foto) VALUES ('" + NombreMun + "', '" + Usuario +"', '"+Foto+"')";
+            String sql;
+            if(opcion==1){
+                sql= "INSERT INTO fotos( nomMunicipio, idUser, foto) VALUES ('" + NombreMun + "', '" + Usuario +"', '"+Foto+"')";
+            }else{
+                ArrayList<String> Municipio = new ArrayList<String>();
+                sql= "SELECT nomMunicipio FROM existe WHERE nomEspNat='"+EspacioNat+"'";
+                try {
+                    Municipio=cargarNombre(sql);
+                    sql= "INSERT INTO fotos( nomMunicipio, idUser, foto) VALUES ('" + Municipio.get(0).toString() + "', '" + Usuario +"', '"+Foto+"')";
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
             try {
                 conectarInsertaFoto(sql);
             } catch (InterruptedException e) {
@@ -143,6 +182,14 @@ public class Detalles_Municipios extends AppCompatActivity {
             imagen.setImageBitmap(imageBitmap);
 
         }
+    }
+    private ArrayList cargarNombre(String consulta) throws InterruptedException {
+        ClientThread clientThread = new ClientThread(consulta);
+        clientThread.columnaResultado = "nomMunicipio";
+        Thread thread = new Thread(clientThread);
+        thread.start();
+        thread.join(); // Esperar respusta del servidor...
+        return clientThread.getResponse();
     }
     private String convertirImgeString(Bitmap bitmap){
         ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
@@ -407,22 +454,34 @@ public class Detalles_Municipios extends AppCompatActivity {
     public void cargarmapa(View poView) throws InterruptedException {
         Double Longitud;
         Double Latitud;
-
-        String Consulta= "SELECT longitud FROM municipios WHERE nombre='" + NombreMun +"'";
+        String Consulta;
+        if (opcion==1){
+            Consulta= "SELECT longitud FROM municipios WHERE nombre='" + NombreMun +"'";
+        }else{
+            Consulta= "SELECT longitud FROM espacios_naturales WHERE nombre='" + EspacioNat +"'";
+        }
         ArrayList<String> ListaPosicion = new ArrayList<String>();
         ListaPosicion = cargarLongitud(Consulta);
         Longitud=Double.parseDouble(ListaPosicion.get(0));
 
         ListaPosicion.clear();
+        if (opcion==1){
+            Consulta= "SELECT latitud FROM municipios WHERE nombre='" + NombreMun +"'";
+        }else{
+            Consulta= "SELECT latitud FROM espacios_naturales WHERE nombre='" + EspacioNat +"'";
+        }
 
-        Consulta= "SELECT latitud FROM municipios WHERE nombre='" + NombreMun +"'";
         ListaPosicion = cargarLatitud(Consulta);
         Latitud=Double.parseDouble(ListaPosicion.get(0));
 
         Intent oIntent = new Intent(this, Mapa.class);
         oIntent.putExtra("longitud", Longitud);
         oIntent.putExtra("latitud", Latitud);
-        oIntent.putExtra("Nombre", NombreMun);
+        if (opcion==1){
+            oIntent.putExtra("Nombre", NombreMun);
+        }else{
+            oIntent.putExtra("Nombre", EspacioNat);
+        }
         startActivity(oIntent);
     }
     public void MisFotos(View poView) throws InterruptedException {
@@ -433,7 +492,13 @@ public class Detalles_Municipios extends AppCompatActivity {
     }
     public void TodasFotos(View poView) throws InterruptedException {
         Intent oIntent = new Intent(this, ListadoFotos.class);
-        oIntent.putExtra("Lugar",NombreMun);
+        if (opcion==1){
+            oIntent.putExtra("Lugar",NombreMun);
+            oIntent.putExtra("otro",1);
+        }else{
+            oIntent.putExtra("Lugar",EspacioNat);
+            oIntent.putExtra("otro",3);
+        }
         oIntent.putExtra("Opcion",2);
         startActivity(oIntent);
     }
