@@ -38,11 +38,11 @@ public class ListadoFotos extends AppCompatActivity {
         otro= oExtras.getInt("otro");
         if (Opcion==1){
             usuario= oExtras.getString("Usuario");
-            mensaje.setText(getString(R.string.mio)+usuario);
+            mensaje.setText(getString(R.string.mio)+" "+usuario);
             sql= "SELECT foto FROM fotos where idUser='"+usuario+"'";
         }else{
             Lugar= oExtras.getString("Lugar");
-            mensaje.setText(getString(R.string.soyo)+Lugar);
+            mensaje.setText(getString(R.string.soyo)+" "+Lugar);
             if(otro==3){
                 sql= "SELECT foto FROM fotos where nomMunicipio=(SELECT nomMunicipio FROM existe where nomEspNat='"+Lugar+"')";
             }else{
